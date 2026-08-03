@@ -40,7 +40,7 @@
 	].sort((left, right) => left.localeCompare(right));
 	let search = $state('');
 	let collectionFilter = $state<'all' | 'owned' | 'missing'>('all');
-	let viewMode = $state<'grid' | 'table'>('grid');
+	let viewMode = $state<'grid' | 'table'>('table');
 	let selectedStatuses = $state<RingStatusId[]>([]);
 	let owned = $state<string[]>([]);
 	let hasLoadedOwnership = $state(false);
@@ -158,16 +158,23 @@
 				bind:value={search}
 				oninput={scrollToPageTop}
 			/>
-			<button
-				class="filter-toggle"
-				type="button"
-				aria-controls="additional-ring-filters"
-				aria-expanded={facetsExpanded}
-				onclick={() => (facetsExpanded = !facetsExpanded)}
-			>
-				{facetsExpanded ? 'Hide filters' : 'Show filters'}
-				<span aria-hidden="true">{facetsExpanded ? '\u2212' : '+'}</span>
-			</button>
+			<div class="filter-controls">
+				<button
+					class="filter-toggle"
+					type="button"
+					aria-controls="additional-ring-filters"
+					aria-expanded={facetsExpanded}
+					onclick={() => (facetsExpanded = !facetsExpanded)}
+				>
+					{facetsExpanded ? 'Hide filters' : 'Show filters'}
+					<span aria-hidden="true">{facetsExpanded ? '\u2212' : '+'}</span>
+				</button>
+				{#if search || collectionFilter !== 'all' || selectedStatuses.length}
+					<button class="filter-clear" type="button" onclick={resetFilters}
+						>Clear filters</button
+					>
+				{/if}
+			</div>
 		</div>
 
 		<div id="additional-ring-filters" class="additional-filters" hidden={!facetsExpanded}>
@@ -229,11 +236,6 @@
 			</div>
 		</fieldset>
 		<div class="results-actions">
-			{#if search || collectionFilter !== 'all' || selectedStatuses.length}
-				<button class="button button--text button--small" type="button" onclick={resetFilters}
-					>Clear filters</button
-				>
-			{/if}
 			<div class="tabs view-tabs" aria-label="Ring view">
 				<button
 					class="tabs__button"
@@ -299,16 +301,6 @@
 				<ul class="ring-table">
 					{#each filteredRings as ring (ring.id)}
 						<li class="ring-table__row" data-selected={owned.includes(ring.id)}>
-							<label class="choice ring-table__ownership">
-								<input
-									type="checkbox"
-									checked={owned.includes(ring.id)}
-									onchange={() => toggleOwned(ring.id)}
-								/>
-								<span class="visually-hidden"
-									>{owned.includes(ring.id) ? `Mark ${ring.name} as not owned` : `Mark ${ring.name} as owned`}</span
-								>
-							</label>
 							<a
 								class="ring-table__link"
 								href={ring.wikiUrl}
@@ -327,6 +319,16 @@
 								<strong class="ring-table__name">{ring.name}</strong>
 								<p class="ring-table__effect">{@html ring.effectHtml}</p>
 							</a>
+							<label class="choice ring-table__ownership">
+								<input
+									type="checkbox"
+									checked={owned.includes(ring.id)}
+									onchange={() => toggleOwned(ring.id)}
+								/>
+								<span class="visually-hidden"
+									>{owned.includes(ring.id) ? `Mark ${ring.name} as not owned` : `Mark ${ring.name} as owned`}</span
+								>
+							</label>
 						</li>
 					{/each}
 				</ul>
@@ -417,7 +419,16 @@
 		max-width: 32rem;
 	}
 
-	.filter-toggle {
+	.filter-controls {
+		display: flex;
+		min-height: 2.25rem;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.filter-toggle,
+	.filter-clear {
 		display: inline-flex;
 		width: fit-content;
 		align-items: center;
@@ -432,7 +443,8 @@
 		transition: color var(--transition-fast);
 	}
 
-	.filter-toggle:hover {
+	.filter-toggle:hover,
+	.filter-clear:hover {
 		color: var(--ink);
 	}
 
@@ -555,7 +567,7 @@
 
 	.ring-table__row {
 		display: grid;
-		grid-template-columns: 2.75rem minmax(0, 1fr);
+		grid-template-columns: minmax(0, 1fr) 2.75rem;
 		align-items: stretch;
 		border-bottom: 1px solid var(--border);
 		background: var(--card-surface, var(--surface));
@@ -571,7 +583,7 @@
 
 	.ring-table__ownership {
 		justify-content: center;
-		border-right: 1px solid var(--border);
+		border-left: 1px solid var(--border);
 	}
 
 	.ring-table__link {
@@ -664,6 +676,32 @@
 		.results-actions {
 			width: 100%;
 			justify-content: space-between;
+		}
+
+		.ring-table {
+			min-width: 0;
+		}
+
+		.ring-table__link {
+			grid-template-columns: 4rem minmax(0, 1fr);
+			grid-template-areas:
+				'image name'
+				'image effect';
+		}
+
+		.ring-table__image {
+			grid-area: image;
+		}
+
+		.ring-table__name {
+			grid-area: name;
+			padding-bottom: 0.2rem;
+		}
+
+		.ring-table__effect {
+			grid-area: effect;
+			padding-top: 0;
+			border-left: 0;
 		}
 	}
 
