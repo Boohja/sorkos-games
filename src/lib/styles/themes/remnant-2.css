@@ -1,0 +1,265 @@
+.theme-remnant {
+	--canvas: oklch(0.105 0.004 250);
+	--surface: oklch(0.145 0.005 250);
+	--surface-raised: oklch(0.18 0.006 250);
+	--ink: oklch(0.84 0.008 70);
+	--muted: oklch(0.61 0.008 70);
+	--accent: oklch(0.9 0.008 70);
+	--accent-ink: oklch(0.11 0.004 250);
+	--border: oklch(0.28 0.006 250);
+	--focus: oklch(0.9 0.008 70);
+	--radius-card: 3px;
+	--radius-control: 3px;
+	--button-primary-bg: linear-gradient(180deg, oklch(0.2 0.004 250), oklch(0.125 0.004 250));
+	--button-primary-text: var(--accent);
+	--button-primary-border: oklch(0.32 0.006 250);
+	--button-secondary-bg: oklch(0.17 0.005 250);
+	--button-secondary-text: var(--ink);
+	--button-secondary-border: var(--border);
+	--card-surface: oklch(0.145 0.005 250 / 0.9);
+	--status-bleed: oklch(0.65 0.25 28);
+	--status-fire: oklch(0.78 0.19 68);
+	--status-acid: oklch(0.84 0.21 125);
+	--status-exposed: oklch(0.94 0.006 70);
+	--status-madness: oklch(0.82 0.08 65);
+	--status-shock: oklch(0.62 0.18 292);
+	--status-slow: oklch(0.9 0.18 108);
+	--status-bulwark: oklch(0.9 0.17 105);
+	--status-haste: oklch(0.91 0.17 105);
+	--status-root-rot: oklch(0.82 0.18 86);
+	--status-contamination: oklch(0.61 0.23 325);
+	--status-curse: oklch(0.68 0.27 330);
+	--status-fragmented: oklch(0.9 0.12 90);
+	--status-suppression: oklch(0.63 0.2 260);
+	--status-shield: #7fe0e1;
+	--status-data-corruption: oklch(0.72 0.01 250);
+	--status-root-fog: oklch(0.62 0.23 28);
+	min-height: 100%;
+	position: relative;
+	isolation: isolate;
+	background: var(--canvas);
+}
+
+.theme-remnant::before {
+	position: fixed;
+	z-index: 0;
+	inset: 4.25rem 0 0;
+	pointer-events: none;
+	background:
+		radial-gradient(ellipse at center, transparent 8%, var(--canvas) 76%),
+		linear-gradient(oklch(0.105 0.004 250 / 0.72), oklch(0.105 0.004 250 / 0.82)),
+		url('/images/remnant-2/background.webp') center / cover no-repeat;
+	content: '';
+}
+
+.theme-remnant > * {
+	position: relative;
+	z-index: 1;
+}
+
+.theme-remnant .button {
+	letter-spacing: 0.035em;
+	text-transform: uppercase;
+}
+
+.theme-remnant .button--primary {
+	box-shadow:
+		inset 0 0 0 2px oklch(0.08 0 0),
+		inset 0 1px 0 oklch(0.45 0.006 250 / 0.32);
+}
+
+.theme-remnant .text-card,
+.theme-remnant .item-card {
+	background:
+		linear-gradient(145deg, oklch(0.19 0.004 250 / 0.22), transparent 45%),
+		var(--card-surface);
+	box-shadow: inset 0 0 0 2px oklch(0.075 0 0 / 0.75);
+}
+
+.theme-remnant .item-card::before {
+	position: absolute;
+	top: 0;
+	right: 0.65rem;
+	left: 0.65rem;
+	height: 2px;
+	background: oklch(0.34 0.005 250);
+	content: '';
+}
+
+.theme-remnant .item-card__header {
+	padding-top: 0.8rem;
+}
+
+.theme-remnant .item-card__media {
+	background:
+		radial-gradient(circle at center, oklch(0.24 0.008 230 / 0.28), transparent 55%),
+		linear-gradient(135deg, transparent, oklch(0.2 0.005 250 / 0.14));
+}
+
+.theme-remnant .item-card__content {
+	background: oklch(0.125 0.004 250 / 0.88);
+}
+
+.theme-remnant .tabs {
+	border-color: oklch(0.2 0.004 250);
+}
+
+.theme-remnant .tabs__button {
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.theme-remnant .status--bleed {
+	--status-color: var(--status-bleed);
+}
+
+.theme-remnant .status--fire {
+	--status-color: var(--status-fire);
+}
+
+.theme-remnant .status--acid {
+	--status-color: var(--status-acid);
+}
+
+.theme-remnant .status--exposed {
+	--status-color: var(--status-exposed);
+}
+
+.theme-remnant .status--madness {
+	--status-color: var(--status-madness);
+}
+
+.theme-remnant .status--shock {
+	--status-color: var(--status-shock);
+}
+
+.theme-remnant .status--slow {
+	--status-color: var(--status-slow);
+}
+
+.theme-remnant .status--bulwark {
+	--status-color: var(--status-bulwark);
+}
+
+.theme-remnant .status--haste {
+	--status-color: var(--status-haste);
+}
+
+.theme-remnant .status--root-rot {
+	--status-color: var(--status-root-rot);
+}
+
+.theme-remnant .status--contamination,
+.theme-remnant .status--fog-contamination {
+	--status-color: var(--status-contamination);
+}
+
+.theme-remnant .status--curse {
+	--status-color: var(--status-curse);
+}
+
+.theme-remnant .status--fragmented {
+	--status-color: var(--status-fragmented);
+}
+
+.theme-remnant .status--suppression {
+	--status-color: var(--status-suppression);
+}
+
+.theme-remnant .status--shield {
+	--status-color: var(--status-shield);
+}
+
+.theme-remnant .status--data-corruption {
+	--status-color: var(--status-data-corruption);
+}
+
+.theme-remnant .status--root-fog {
+	--status-color: var(--status-root-fog);
+}
+
+.theme-remnant .status {
+	color: var(--status-color);
+	font-weight: 750;
+}
+
+.theme-remnant .item-card__content strong {
+	color: var(--ink);
+	font-weight: 750;
+}
+
+.theme-remnant .facet-filter {
+	min-height: 2.25rem;
+	padding: 0.4rem 0.65rem;
+	border-radius: var(--radius-control);
+	background: var(--canvas);
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.75rem;
+	font-weight: 750;
+	letter-spacing: 0.035em;
+	transition:
+		background-color 140ms ease,
+		border-color 140ms ease,
+		box-shadow 140ms ease;
+}
+
+.theme-remnant .status-filter {
+	border: 1px solid color-mix(in oklch, var(--status-color) 38%, var(--border));
+	color: var(--status-color);
+}
+
+.theme-remnant .status-filter:hover {
+	border-color: var(--status-color);
+	background: color-mix(in oklch, var(--status-color) 8%, var(--canvas));
+}
+
+.theme-remnant .status-filter[aria-pressed='true'] {
+	border-color: var(--status-color);
+	background: color-mix(in oklch, var(--status-color) 18%, var(--canvas));
+	box-shadow: inset 0 -2px 0 var(--status-color);
+}
+
+.theme-remnant .status-filter:focus-visible {
+	outline: 2px solid var(--status-color);
+	outline-offset: 2px;
+}
+
+.theme-remnant .text-filter {
+	border: 1px solid var(--border);
+	color: var(--muted);
+}
+
+.theme-remnant .text-filter:hover {
+	border-color: var(--muted);
+	background: var(--surface);
+	color: var(--ink);
+}
+
+.theme-remnant .text-filter[aria-pressed='true'] {
+	border-color: var(--accent);
+	background: var(--surface-raised);
+	color: var(--accent);
+	box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.theme-remnant .text-filter:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 2px;
+}
+
+.theme-remnant .item-card[data-selected='true'] {
+	background:
+		linear-gradient(oklch(0.9 0.008 70 / 0.055), oklch(0.9 0.008 70 / 0.018)),
+		var(--card-surface);
+}
+
+.theme-remnant .item-card[data-selected='true'] .item-card__media {
+	background:
+		radial-gradient(circle at center, oklch(0.78 0.01 70 / 0.16), transparent 58%),
+		linear-gradient(135deg, transparent, oklch(0.24 0.005 250 / 0.18));
+}
+
+.theme-remnant .item-card[data-selected='true'] .ownership {
+	color: var(--ink);
+}
