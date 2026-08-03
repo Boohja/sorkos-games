@@ -3,7 +3,19 @@
 </svelte:head>
 
 <div class="shell games-page">
-	<h1 class="visually-hidden">Games library</h1>
+	<section class="library-hero">
+		<div class="library-hero__copy">
+			<h1>Just some tools for games I like.</h1>
+		</div>
+		<img
+			class="library-hero__image"
+			src="/images/gamepad.webp"
+			alt=""
+			width="500"
+			height="300"
+		/>
+	</section>
+
 	<div class="game-grid">
 		<a class="game-card" href="/remnant-2/">
 			<img
@@ -21,6 +33,33 @@
 <style>
 	.games-page {
 		padding-block: clamp(2rem, 6vw, 4rem);
+	}
+
+	.library-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
+		gap: clamp(2rem, 8vw, 7rem);
+		align-items: center;
+		margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+		padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.library-hero__copy {
+		max-width: 38rem;
+	}
+
+	.library-hero h1 {
+		max-width: 11ch;
+		margin-bottom: 0;
+		font-size: clamp(2.75rem, 6vw, 5rem);
+	}
+
+	.library-hero__image {
+		display: block;
+		width: min(100%, 31.25rem);
+		height: auto;
+		justify-self: end;
 	}
 
 	.game-grid {
@@ -69,6 +108,18 @@
 	@media (max-width: 30rem) {
 		.game-grid {
 			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+
+	@media (max-width: 48rem) {
+		.library-hero {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.library-hero__image {
+			width: min(82%, 26rem);
+			justify-self: center;
 		}
 	}
 </style>

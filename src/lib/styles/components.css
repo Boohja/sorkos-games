@@ -281,3 +281,39 @@ fieldset > legend {
 	background: var(--accent);
 	content: '';
 }
+
+/* Shared navigation for game landing pages. Theme tokens can change its tone,
+   while the opaque base keeps links legible over artwork. */
+.game-page-list ul {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid var(--border);
+	list-style: none;
+}
+
+.game-page-list a {
+	display: flex;
+	min-height: 5rem;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	border-bottom: 1px solid var(--border);
+	background: color-mix(in oklch, var(--canvas) 40%, transparent);
+	color: var(--ink);
+	text-decoration: none;
+	transition:
+		background var(--transition-fast),
+		color var(--transition-fast),
+		padding var(--transition-fast);
+}
+
+.game-page-list a:hover {
+	padding-inline: 1.25rem;
+	background: color-mix(in oklch, var(--canvas) 50%, transparent);
+	color: var(--accent);
+}
+
+.game-page-list a:active {
+	background: var(--canvas);
+}

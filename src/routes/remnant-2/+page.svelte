@@ -22,7 +22,7 @@
 		</blockquote>
 	</section>
 
-	<nav class="subpage-nav" aria-label="Remnant II pages">
+	<nav class="game-page-list subpage-nav" aria-label="Remnant II pages">
 		<ul>
 			<li>
 				<a href="/remnant-2/rings/">
@@ -78,40 +78,16 @@
 		font-style: normal;
 	}
 
-	.subpage-nav ul {
-		margin: 0;
-		padding: 0;
-		border-top: 1px solid var(--border);
-		list-style: none;
-	}
-
 	.subpage-nav a {
-		display: flex;
-		min-height: 5rem;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: 1rem 0;
-		border-bottom: 1px solid var(--border);
-		color: var(--ink);
 		font-size: 1.45rem;
 		font-weight: 700;
 		letter-spacing: -0.02em;
-		text-decoration: none;
-		transition:
-			color var(--transition-fast),
-			padding var(--transition-fast);
 	}
 
 	.subpage-nav a span:last-child {
 		color: var(--muted);
 		font-size: 1.15rem;
 		font-weight: 400;
-	}
-
-	.subpage-nav a:hover {
-		padding-inline: 0.75rem;
-		color: var(--accent);
 	}
 
 	@media (max-width: 48rem) {

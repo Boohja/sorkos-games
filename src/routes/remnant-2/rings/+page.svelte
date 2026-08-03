@@ -44,6 +44,7 @@
 	let selectedStatuses = $state<RingStatusId[]>([]);
 	let owned = $state<string[]>([]);
 	let hasLoadedOwnership = $state(false);
+	let facetsExpanded = $state(true);
 	const availableStatusEffects = statusEffects.filter((status) =>
 		rings.some((ring) => ring.statuses.includes(status.id))
 	);
@@ -70,6 +71,8 @@
 	const ownedCount = $derived(rings.filter((ring) => owned.includes(ring.id)).length);
 
 	onMount(() => {
+		facetsExpanded = window.matchMedia('(min-width: 48.01rem)').matches;
+
 		try {
 			const saved = localStorage.getItem(storageKey);
 			owned = saved ? JSON.parse(saved) : [];
@@ -90,20 +93,37 @@
 		owned = owned.includes(id) ? owned.filter((item) => item !== id) : [...owned, id];
 	}
 
+	function scrollToPageTop() {
+		if (!browser) return;
+
+		window.scrollTo({
+			top: 0,
+			behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+		});
+	}
+
 	function resetFilters() {
 		search = '';
 		collectionFilter = 'all';
 		selectedStatuses = [];
+		scrollToPageTop();
+	}
+
+	function setCollectionFilter(filter: 'all' | 'owned' | 'missing') {
+		collectionFilter = filter;
+		scrollToPageTop();
 	}
 
 	function toggleStatus(status: RingStatusId) {
 		selectedStatuses = selectedStatuses.includes(status)
 			? selectedStatuses.filter((item) => item !== status)
 			: [...selectedStatuses, status];
+		scrollToPageTop();
 	}
 
 	function toggleTextFilter(filter: string) {
 		search = search.toLocaleLowerCase() === filter.toLocaleLowerCase() ? '' : filter;
+		scrollToPageTop();
 	}
 </script>
 
@@ -136,64 +156,78 @@
 				id="ring-search"
 				type="search"
 				bind:value={search}
+				oninput={scrollToPageTop}
 			/>
+			<button
+				class="filter-toggle"
+				type="button"
+				aria-controls="additional-ring-filters"
+				aria-expanded={facetsExpanded}
+				onclick={() => (facetsExpanded = !facetsExpanded)}
+			>
+				{facetsExpanded ? 'Hide filters' : 'Show filters'}
+				<span aria-hidden="true">{facetsExpanded ? '\u2212' : '+'}</span>
+			</button>
 		</div>
 
-		<fieldset>
-			<legend>Collection</legend>
+		<div id="additional-ring-filters" class="additional-filters" hidden={!facetsExpanded}>
+			<fieldset class="status-filter-group">
+				<legend class="visually-hidden">Status effects</legend>
+				<div class="status-filter-list">
+					{#each availableStatusEffects as status}
+						<button
+							class={`facet-filter status-filter status--${status.id}`}
+							type="button"
+							aria-pressed={selectedStatuses.includes(status.id)}
+							onclick={() => toggleStatus(status.id)}>{status.label}</button
+						>
+					{/each}
+				</div>
+			</fieldset>
+
+			<fieldset class="text-filter-group">
+				<legend class="visually-hidden">Effect keywords</legend>
+				<div class="text-filter-list">
+					{#each presetFilters as filter}
+						<button
+							class="facet-filter text-filter"
+							type="button"
+							aria-pressed={search.toLocaleLowerCase() === filter.toLocaleLowerCase()}
+							onclick={() => toggleTextFilter(filter)}>{filter}</button
+						>
+					{/each}
+				</div>
+			</fieldset>
+		</div>
+	</section>
+
+	<div class="results-heading">
+		<p class="visually-hidden" aria-live="polite">
+			{filteredRings.length} {filteredRings.length === 1 ? 'ring' : 'rings'}
+		</p>
+		<fieldset class="results-collection-filter">
+			<legend class="visually-hidden">Collection</legend>
 			<div class="tabs collection-filters">
 				<button
 					class="tabs__button"
 					type="button"
 					aria-pressed={collectionFilter === 'all'}
-					onclick={() => (collectionFilter = 'all')}>All</button
+					onclick={() => setCollectionFilter('all')}>All</button
 				>
 				<button
 					class="tabs__button"
 					type="button"
 					aria-pressed={collectionFilter === 'owned'}
-					onclick={() => (collectionFilter = 'owned')}>Owned</button
+					onclick={() => setCollectionFilter('owned')}>Owned</button
 				>
 				<button
 					class="tabs__button"
 					type="button"
 					aria-pressed={collectionFilter === 'missing'}
-					onclick={() => (collectionFilter = 'missing')}>Missing</button
+					onclick={() => setCollectionFilter('missing')}>Missing</button
 				>
 			</div>
 		</fieldset>
-
-		<fieldset class="status-filter-group">
-			<legend>Status effects <span>Match any selected status</span></legend>
-			<div class="status-filter-list">
-				{#each availableStatusEffects as status}
-					<button
-						class={`facet-filter status-filter status--${status.id}`}
-						type="button"
-						aria-pressed={selectedStatuses.includes(status.id)}
-						onclick={() => toggleStatus(status.id)}>{status.label}</button
-					>
-				{/each}
-			</div>
-		</fieldset>
-
-		<fieldset class="text-filter-group">
-			<legend>Effect keywords</legend>
-			<div class="text-filter-list">
-				{#each presetFilters as filter}
-					<button
-						class="facet-filter text-filter"
-						type="button"
-						aria-pressed={search.toLocaleLowerCase() === filter.toLocaleLowerCase()}
-						onclick={() => toggleTextFilter(filter)}>{filter}</button
-					>
-				{/each}
-			</div>
-		</fieldset>
-	</section>
-
-	<div class="results-heading">
-		<p aria-live="polite">{filteredRings.length} {filteredRings.length === 1 ? 'ring' : 'rings'}</p>
 		<div class="results-actions">
 			{#if search || collectionFilter !== 'all' || selectedStatuses.length}
 				<button class="button button--text button--small" type="button" onclick={resetFilters}
@@ -361,8 +395,11 @@
 
 	.filters {
 		display: grid;
-		grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
+		position: sticky;
+		z-index: 5;
+		top: 1rem;
 	}
 
 	.filter-search,
@@ -376,20 +413,42 @@
 		border: 0;
 	}
 
-	.collection-filters {
-		margin-top: 0.45rem;
+	.filter-search {
+		max-width: 32rem;
 	}
 
-	.status-filter-group,
-	.text-filter-group {
-		grid-column: 1 / -1;
-	}
-
-	.status-filter-group legend span {
-		margin-left: 0.35rem;
+	.filter-toggle {
+		display: inline-flex;
+		width: fit-content;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.15rem 0;
+		border: 0;
+		background: transparent;
 		color: var(--muted);
-		font-size: 0.75rem;
-		font-weight: 400;
+		cursor: pointer;
+		font-size: 0.78rem;
+		font-weight: 650;
+		transition: color var(--transition-fast);
+	}
+
+	.filter-toggle:hover {
+		color: var(--ink);
+	}
+
+	.filter-toggle span {
+		color: var(--accent);
+		font-size: 1rem;
+		line-height: 1;
+	}
+
+	.additional-filters {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.additional-filters[hidden] {
+		display: none;
 	}
 
 	.status-filter-list,
@@ -397,7 +456,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.45rem;
-		margin-top: 0.55rem;
+		margin-top: 0;
 	}
 
 	.results-heading {
@@ -409,12 +468,14 @@
 		border-bottom: 1px solid var(--border);
 	}
 
-	.results-heading p {
-		margin: 0;
-		padding-bottom: 0.85rem;
-		color: var(--muted);
-		font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-		font-size: 0.8rem;
+	.results-collection-filter {
+		align-self: stretch;
+	}
+
+	.collection-filters {
+		height: 100%;
+		gap: 1.5rem;
+		border-bottom: 0;
 	}
 
 	.results-actions {
@@ -586,6 +647,7 @@
 		.rings-title,
 		.filters {
 			grid-template-columns: 1fr;
+			position: static;
 		}
 
 		.collection-count {
