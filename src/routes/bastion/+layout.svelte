@@ -2,6 +2,6 @@
 	let { children } = $props();
 </script>
 
-<div class="game-theme theme-remnant">
+<div class="game-theme theme-bastion">
 	{@render children()}
 </div>

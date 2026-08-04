@@ -1,0 +1,20 @@
+.theme-grace {
+	--canvas: oklch(0.18 0.018 155);
+	--surface: oklch(0.235 0.022 155);
+	--surface-raised: oklch(0.275 0.026 155);
+	--ink: oklch(0.91 0.035 92);
+	--muted: oklch(0.73 0.03 92);
+	--accent: oklch(0.65 0.12 154);
+	--accent-ink: oklch(0.15 0.02 155);
+	--border: oklch(0.36 0.03 155);
+	--focus: oklch(0.78 0.13 145);
+	--paper: oklch(0.9 0.045 88);
+	--paper-deep: oklch(0.84 0.055 84);
+	--paper-ink: oklch(0.25 0.035 58);
+	--paper-muted: oklch(0.43 0.035 65);
+	--paper-line: oklch(0.63 0.055 72);
+	--radius-card: 2px;
+	--radius-control: 2px;
+	--game-background-image: url('/images/yes-your-grace/background.webp');
+	--game-background-scrim: oklch(0.14 0.02 155 / 0.7);
+}

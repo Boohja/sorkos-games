@@ -1,5 +1,8 @@
 @import './lib/styles/components.css';
 @import './lib/styles/themes/remnant-2.css';
+@import './lib/styles/themes/bastion.css';
+@import './lib/styles/themes/octopath-traveler.css';
+@import './lib/styles/themes/yes-your-grace.css';
 
 :root {
 	font-family:
@@ -188,6 +191,45 @@ a {
 
 .site-footer--remnant a {
 	color: oklch(0.84 0.008 70);
+}
+
+.site-footer--grace {
+	border-color: oklch(0.31 0.025 155);
+	background: oklch(0.17 0.018 155);
+}
+
+.site-footer--grace p {
+	color: oklch(0.75 0.025 92);
+}
+
+.site-footer--grace a {
+	color: oklch(0.91 0.035 92);
+}
+
+.site-footer--octopath {
+	border-color: oklch(0.32 0.035 245);
+	background: oklch(0.13 0.018 250);
+}
+
+.site-footer--octopath p {
+	color: oklch(0.7 0.025 245);
+}
+
+.site-footer--octopath a {
+	color: oklch(0.92 0.012 245);
+}
+
+.site-footer--bastion {
+	border-color: oklch(0.35 0.055 188);
+	background: oklch(0.16 0.04 190);
+}
+
+.site-footer--bastion p {
+	color: oklch(0.74 0.035 82);
+}
+
+.site-footer--bastion a {
+	color: oklch(0.9 0.055 82);
 }
 
 ::view-transition-old(root) {

@@ -34,27 +34,8 @@
 	--status-shield: #7fe0e1;
 	--status-data-corruption: oklch(0.72 0.01 250);
 	--status-root-fog: oklch(0.62 0.23 28);
-	min-height: 100%;
-	position: relative;
-	isolation: isolate;
-	background: var(--canvas);
-}
-
-.theme-remnant::before {
-	position: fixed;
-	z-index: 0;
-	inset: 4.25rem 0 0;
-	pointer-events: none;
-	background:
-		radial-gradient(ellipse at center, transparent 8%, var(--canvas) 76%),
-		linear-gradient(oklch(0.105 0.004 250 / 0.72), oklch(0.105 0.004 250 / 0.82)),
-		url('/images/remnant-2/background.webp') center / cover no-repeat;
-	content: '';
-}
-
-.theme-remnant > * {
-	position: relative;
-	z-index: 1;
+	--game-background-image: url('/images/remnant-2/background.webp');
+	--game-background-scrim: oklch(0.105 0.004 250 / 0.76);
 }
 
 .theme-remnant .button {

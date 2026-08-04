@@ -1,0 +1,44 @@
+.theme-octopath {
+	--canvas: oklch(0.135 0.02 250);
+	--surface: oklch(0.19 0.025 250 / 0.72);
+	--surface-raised: oklch(0.24 0.04 245 / 0.82);
+	--ink: oklch(0.94 0.012 240);
+	--muted: oklch(0.72 0.025 240);
+	--accent: oklch(0.7 0.13 240);
+	--accent-ink: oklch(0.12 0.025 250);
+	--border: oklch(0.38 0.04 245 / 0.75);
+	--focus: oklch(0.78 0.15 235);
+	--radius-card: 1px;
+	--radius-control: 1px;
+	--button-primary-bg: oklch(0.42 0.12 245 / 0.88);
+	--button-primary-border: oklch(0.7 0.13 240);
+	--button-primary-text: oklch(0.96 0.012 240);
+	--game-background-image: url('/images/octopath-traveler/background.webp');
+	--game-background-scrim: oklch(0.1 0.025 250 / 0.58);
+}
+
+.theme-octopath .game-page-list a {
+	border-inline: 1px solid var(--border);
+	background: linear-gradient(90deg, oklch(0.12 0.025 250 / 0.88), oklch(0.18 0.04 245 / 0.7));
+	box-shadow: inset 3px 0 0 transparent;
+	backdrop-filter: blur(12px);
+}
+
+.theme-octopath .game-page-list a:hover {
+	border-color: var(--accent);
+	background: linear-gradient(90deg, oklch(0.2 0.07 245 / 0.9), oklch(0.26 0.1 240 / 0.72));
+	box-shadow: inset 3px 0 0 var(--accent);
+	color: var(--ink);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+	.theme-octopath {
+		--surface: oklch(0.19 0.025 250);
+		--surface-raised: oklch(0.24 0.04 245);
+	}
+
+	.theme-octopath .game-page-list a {
+		background: oklch(0.16 0.03 250);
+		backdrop-filter: none;
+	}
+}

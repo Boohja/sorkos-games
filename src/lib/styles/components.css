@@ -282,8 +282,78 @@ fieldset > legend {
 	content: '';
 }
 
-/* Shared navigation for game landing pages. Theme tokens can change its tone,
-   while the opaque base keeps links legible over artwork. */
+/* Shared game landing contract. Each theme supplies colors and artwork only. */
+.game-theme {
+	position: relative;
+	isolation: isolate;
+	min-height: 100%;
+	background: var(--canvas);
+}
+
+.game-theme::before {
+	position: fixed;
+	z-index: 0;
+	inset: var(--site-header-height) 0 0;
+	pointer-events: none;
+	background:
+		radial-gradient(ellipse at center, transparent 8%, var(--canvas) 78%),
+		linear-gradient(var(--game-background-scrim, oklch(0.1 0 0 / 0.68)), var(--game-background-scrim, oklch(0.1 0 0 / 0.68))),
+		var(--game-background-image) center / cover no-repeat;
+	content: '';
+}
+
+.game-theme > * {
+	position: relative;
+	z-index: 1;
+}
+
+.game-landing {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
+	gap: clamp(3rem, 8vw, 7rem);
+	align-items: center;
+	min-height: calc(100dvh - var(--site-header-height) - 4.25rem);
+	padding-block: clamp(1.5rem, 4vh, 3rem);
+}
+
+.game-identity {
+	min-width: 0;
+}
+
+.game-logo {
+	max-width: 32rem;
+	margin: 0 0 1.5rem;
+}
+
+.game-logo img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.game-quote {
+	max-width: 31rem;
+	margin: 0;
+	color: var(--muted);
+}
+
+.game-quote p {
+	margin-bottom: 0.45rem;
+	font-size: 1.05rem;
+	line-height: 1.6;
+	text-wrap: pretty;
+}
+
+.game-quote cite {
+	color: var(--ink);
+	font-size: 0.875rem;
+	font-style: normal;
+}
+
+.game-quote cite::before {
+	content: '- ';
+}
+
 .game-page-list ul {
 	margin: 0;
 	padding: 0;
@@ -299,7 +369,7 @@ fieldset > legend {
 	gap: 1rem;
 	padding: 1rem;
 	border-bottom: 1px solid var(--border);
-	background: color-mix(in oklch, var(--canvas) 40%, transparent);
+	background: color-mix(in oklch, var(--canvas) 42%, transparent);
 	color: var(--ink);
 	text-decoration: none;
 	transition:
@@ -310,10 +380,22 @@ fieldset > legend {
 
 .game-page-list a:hover {
 	padding-inline: 1.25rem;
-	background: color-mix(in oklch, var(--canvas) 50%, transparent);
+	background: color-mix(in oklch, var(--canvas) 52%, transparent);
 	color: var(--accent);
 }
 
 .game-page-list a:active {
 	background: var(--canvas);
+}
+
+@media (max-width: 48rem) {
+	.game-landing {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+		align-content: center;
+	}
+
+	.game-logo {
+		max-width: 26rem;
+	}
 }

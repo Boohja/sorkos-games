@@ -7,6 +7,14 @@
 	const currentYear = new Date().getFullYear();
 	const isRemnantRoute = $derived(page.url.pathname.startsWith('/remnant-2'));
 	const isRemnantLanding = $derived(page.url.pathname.replace(/\/$/, '') === '/remnant-2');
+	const isGraceRoute = $derived(page.url.pathname.startsWith('/yes-your-grace'));
+	const isGraceLanding = $derived(page.url.pathname.replace(/\/$/, '') === '/yes-your-grace');
+	const isOctopathRoute = $derived(page.url.pathname.startsWith('/octopath-traveler'));
+	const isOctopathLanding = $derived(
+		page.url.pathname.replace(/\/$/, '') === '/octopath-traveler'
+	);
+	const isBastionRoute = $derived(page.url.pathname.startsWith('/bastion'));
+	const isBastionLanding = $derived(page.url.pathname.replace(/\/$/, '') === '/bastion');
 
 	onNavigate((navigation) => {
 		if (
@@ -51,6 +59,27 @@
 						href="/remnant-2/"
 						aria-current={isRemnantLanding ? 'page' : undefined}>Remnant II</a
 					>
+				{:else if isGraceRoute}
+					<span class="site-breadcrumb__separator" aria-hidden="true">/</span>
+					<a
+						class="site-breadcrumb__game"
+						href="/yes-your-grace/"
+						aria-current={isGraceLanding ? 'page' : undefined}>Yes, Your Grace</a
+					>
+				{:else if isOctopathRoute}
+					<span class="site-breadcrumb__separator" aria-hidden="true">/</span>
+					<a
+						class="site-breadcrumb__game"
+						href="/octopath-traveler/"
+						aria-current={isOctopathLanding ? 'page' : undefined}>Octopath Traveler</a
+					>
+				{:else if isBastionRoute}
+					<span class="site-breadcrumb__separator" aria-hidden="true">/</span>
+					<a
+						class="site-breadcrumb__game"
+						href="/bastion/"
+						aria-current={isBastionLanding ? 'page' : undefined}>Bastion</a
+					>
 				{/if}
 			</nav>
 		</div>
@@ -58,7 +87,13 @@
 
 	<main class="site-main">{@render children()}</main>
 
-	<footer class:site-footer--remnant={isRemnantRoute} class="site-footer">
+	<footer
+		class:site-footer--remnant={isRemnantRoute}
+		class:site-footer--grace={isGraceRoute}
+		class:site-footer--octopath={isOctopathRoute}
+		class:site-footer--bastion={isBastionRoute}
+		class="site-footer"
+	>
 		<div class="shell site-footer__inner">
 			<p>&copy; {currentYear} by <a href="https://sorkos.net">sorkos.net</a></p>
 		</div>

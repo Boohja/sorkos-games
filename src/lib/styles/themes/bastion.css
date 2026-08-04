@@ -1,0 +1,42 @@
+.theme-bastion {
+	--canvas: oklch(0.16 0.04 190);
+	--surface: oklch(0.21 0.052 190 / 0.8);
+	--surface-raised: oklch(0.27 0.062 187 / 0.88);
+	--ink: oklch(0.92 0.055 82);
+	--muted: oklch(0.76 0.04 82);
+	--accent: oklch(0.77 0.14 82);
+	--accent-ink: oklch(0.19 0.045 190);
+	--border: oklch(0.45 0.07 182 / 0.8);
+	--focus: oklch(0.72 0.18 310);
+	--radius-card: 3px;
+	--radius-control: 3px;
+	--button-primary-bg: oklch(0.55 0.13 82);
+	--button-primary-border: oklch(0.78 0.14 82);
+	--button-primary-text: oklch(0.16 0.04 190);
+	--bastion-paper: oklch(0.88 0.07 83);
+	--bastion-paper-deep: oklch(0.79 0.095 78);
+	--bastion-paper-ink: oklch(0.25 0.045 55);
+	--bastion-paper-muted: oklch(0.4 0.04 60);
+	--bastion-paper-line: oklch(0.62 0.09 72);
+	--game-background-image: url('/images/bastion/background.webp');
+	--game-background-scrim: oklch(0.12 0.035 190 / 0.56);
+}
+
+.theme-bastion .game-page-list a {
+	border-inline: 1px solid var(--border);
+	background: oklch(0.16 0.045 190 / 0.78);
+	backdrop-filter: blur(10px);
+}
+
+.theme-bastion .game-page-list a:hover {
+	border-color: var(--accent);
+	background: oklch(0.24 0.065 188 / 0.9);
+	color: var(--accent);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+	.theme-bastion .game-page-list a {
+		background: oklch(0.18 0.045 190);
+		backdrop-filter: none;
+	}
+}

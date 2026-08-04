@@ -17,6 +17,26 @@
 	</section>
 
 	<div class="game-grid">
+		<a class="game-card" href="/bastion/">
+			<img
+				class="game-card__cover"
+				src="/images/bastion/cover.webp"
+				alt=""
+				width="250"
+				height="304"
+			/>
+			<h2>Bastion</h2>
+		</a>
+		<a class="game-card" href="/octopath-traveler/">
+			<img
+				class="game-card__cover"
+				src="/images/octopath-traveler/cover.webp"
+				alt=""
+				width="250"
+				height="304"
+			/>
+			<h2>Octopath Traveler</h2>
+		</a>
 		<a class="game-card" href="/remnant-2/">
 			<img
 				class="game-card__cover"
@@ -26,6 +46,16 @@
 				height="304"
 			/>
 			<h2>Remnant II</h2>
+		</a>
+		<a class="game-card game-card--pending" href="/yes-your-grace/">
+			<img
+				class="game-card__cover"
+				src="/images/yes-your-grace/cover.webp"
+				alt=""
+				width="250"
+				height="304"
+			/>
+			<h2>Yes, Your Grace</h2>
 		</a>
 	</div>
 </div>
@@ -69,6 +99,8 @@
 	}
 
 	.game-card {
+		display: grid;
+		grid-template-rows: auto minmax(3.35rem, auto);
 		overflow: hidden;
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
@@ -98,6 +130,8 @@
 	}
 
 	.game-card h2 {
+		display: flex;
+		align-items: center;
 		margin: 0;
 		padding: 0.85rem 1rem;
 		border-top: 1px solid var(--border);

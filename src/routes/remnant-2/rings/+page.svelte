@@ -44,7 +44,7 @@
 	let selectedStatuses = $state<RingStatusId[]>([]);
 	let owned = $state<string[]>([]);
 	let hasLoadedOwnership = $state(false);
-	let facetsExpanded = $state(true);
+	let facetsExpanded = $state(false);
 	const availableStatusEffects = statusEffects.filter((status) =>
 		rings.some((ring) => ring.statuses.includes(status.id))
 	);
@@ -71,8 +71,6 @@
 	const ownedCount = $derived(rings.filter((ring) => owned.includes(ring.id)).length);
 
 	onMount(() => {
-		facetsExpanded = window.matchMedia('(min-width: 48.01rem)').matches;
-
 		try {
 			const saved = localStorage.getItem(storageKey);
 			owned = saved ? JSON.parse(saved) : [];
