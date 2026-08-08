@@ -1,7 +1,7 @@
 .theme-bastion {
 	--canvas: oklch(0.16 0.04 190);
-	--surface: oklch(0.21 0.052 190 / 0.8);
-	--surface-raised: oklch(0.27 0.062 187 / 0.88);
+	--surface: oklch(0.21 0.052 190);
+	--surface-raised: oklch(0.27 0.062 187);
 	--ink: oklch(0.92 0.055 82);
 	--muted: oklch(0.76 0.04 82);
 	--accent: oklch(0.77 0.14 82);
@@ -20,17 +20,20 @@
 	--bastion-paper-line: oklch(0.62 0.09 72);
 	--game-background-image: url('/images/bastion/background.webp');
 	--game-background-scrim: oklch(0.12 0.035 190 / 0.56);
+	--game-navigation-opacity: 66%;
+	--game-navigation-hover-opacity: 78%;
+	--game-panel-color: var(--surface);
 }
 
 .theme-bastion .game-page-list a {
 	border-inline: 1px solid var(--border);
-	background: oklch(0.16 0.045 190 / 0.78);
+	background: color-mix(in oklch, oklch(0.16 0.045 190) var(--game-navigation-opacity), transparent);
 	backdrop-filter: blur(10px);
 }
 
 .theme-bastion .game-page-list a:hover {
 	border-color: var(--accent);
-	background: oklch(0.24 0.065 188 / 0.9);
+	background: color-mix(in oklch, oklch(0.24 0.065 188) var(--game-navigation-hover-opacity), transparent);
 	color: var(--accent);
 }
 

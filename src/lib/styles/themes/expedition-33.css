@@ -1,0 +1,53 @@
+.theme-expedition {
+	--canvas: oklch(0.075 0.018 310);
+	--surface: oklch(0.135 0.026 315);
+	--surface-raised: oklch(0.19 0.052 320);
+	--ink: oklch(0.94 0.018 80);
+	--muted: oklch(0.76 0.028 77);
+	--accent: oklch(0.53 0.115 320);
+	--accent-ink: oklch(0.97 0.02 80);
+	--border: oklch(0.74 0.025 78 / 0.62);
+	--focus: oklch(0.84 0.12 78);
+	--radius-card: 0;
+	--radius-control: 0;
+	--button-primary-bg: oklch(0.34 0.105 320);
+	--button-primary-border: oklch(0.74 0.06 322);
+	--button-primary-text: oklch(0.96 0.018 80);
+	--game-background-image: url('/images/expedition-33/background.webp');
+	--game-background-scrim: oklch(0.055 0.02 305 / 0.67);
+	--expedition-gold: oklch(0.83 0.075 78);
+	--expedition-purple: oklch(0.34 0.105 320);
+	--expedition-panel: oklch(0.105 0.022 310);
+	--expedition-danger: oklch(0.62 0.19 25);
+	--game-navigation-opacity: 72%;
+	--game-navigation-hover-opacity: 82%;
+	--game-panel-opacity: 62%;
+	--game-panel-strong-opacity: 72%;
+	--game-panel-color: var(--expedition-panel);
+	--game-panel-strong-color: oklch(0.16 0.04 315);
+}
+
+.theme-expedition .game-page-list a {
+	position: relative;
+	min-height: 4.75rem;
+	margin-block: 0.65rem;
+	padding-inline: 1.4rem 1.8rem;
+	border: 0;
+	background: linear-gradient(90deg, color-mix(in oklch, oklch(0.17 0.055 318) var(--game-navigation-opacity), transparent), color-mix(in oklch, oklch(0.11 0.025 310) var(--game-navigation-opacity), transparent));
+	clip-path: polygon(1.1rem 0, calc(100% - 1.1rem) 0, 100% 50%, calc(100% - 1.1rem) 100%, 1.1rem 100%, 0 50%);
+}
+
+.theme-expedition .game-page-list a::before {
+	position: absolute;
+	inset: 0.3rem 0.55rem;
+	pointer-events: none;
+	background:
+		linear-gradient(90deg, var(--border) 0 19%, transparent 19% 28%, var(--border) 28% 82%, transparent 82%) top / 100% 1px no-repeat,
+		linear-gradient(90deg, transparent 0 12%, var(--border) 12% 61%, transparent 61% 70%, var(--border) 70%) bottom / 100% 1px no-repeat;
+	content: '';
+}
+
+.theme-expedition .game-page-list a:hover {
+	background: linear-gradient(90deg, color-mix(in oklch, oklch(0.28 0.095 320) var(--game-navigation-hover-opacity), transparent), color-mix(in oklch, oklch(0.15 0.04 312) var(--game-navigation-hover-opacity), transparent));
+	color: var(--ink);
+}

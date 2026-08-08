@@ -17,4 +17,6 @@
 	--radius-control: 2px;
 	--game-background-image: url('/images/yes-your-grace/background.webp');
 	--game-background-scrim: oklch(0.14 0.02 155 / 0.7);
+	--game-panel-color: var(--surface);
+	--game-panel-strong-color: var(--paper);
 }

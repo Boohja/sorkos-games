@@ -15,6 +15,14 @@
 	);
 	const isBastionRoute = $derived(page.url.pathname.startsWith('/bastion'));
 	const isBastionLanding = $derived(page.url.pathname.replace(/\/$/, '') === '/bastion');
+	const isGraveyardRoute = $derived(page.url.pathname.startsWith('/graveyard-keeper'));
+	const isGraveyardLanding = $derived(
+		page.url.pathname.replace(/\/$/, '') === '/graveyard-keeper'
+	);
+	const isExpeditionRoute = $derived(page.url.pathname.startsWith('/expedition-33'));
+	const isExpeditionLanding = $derived(
+		page.url.pathname.replace(/\/$/, '') === '/expedition-33'
+	);
 
 	onNavigate((navigation) => {
 		if (
@@ -80,6 +88,20 @@
 						href="/bastion/"
 						aria-current={isBastionLanding ? 'page' : undefined}>Bastion</a
 					>
+				{:else if isGraveyardRoute}
+					<span class="site-breadcrumb__separator" aria-hidden="true">/</span>
+					<a
+						class="site-breadcrumb__game"
+						href="/graveyard-keeper/"
+						aria-current={isGraveyardLanding ? 'page' : undefined}>Graveyard Keeper</a
+					>
+				{:else if isExpeditionRoute}
+					<span class="site-breadcrumb__separator" aria-hidden="true">/</span>
+					<a
+						class="site-breadcrumb__game"
+						href="/expedition-33/"
+						aria-current={isExpeditionLanding ? 'page' : undefined}>Clair Obscur: Expedition 33</a
+					>
 				{/if}
 			</nav>
 		</div>
@@ -92,6 +114,8 @@
 		class:site-footer--grace={isGraceRoute}
 		class:site-footer--octopath={isOctopathRoute}
 		class:site-footer--bastion={isBastionRoute}
+		class:site-footer--graveyard={isGraveyardRoute}
+		class:site-footer--expedition={isExpeditionRoute}
 		class="site-footer"
 	>
 		<div class="shell site-footer__inner">

@@ -144,7 +144,7 @@
 	.progress-seal {
 		padding: 1rem;
 		border: 1px solid var(--border);
-		background: var(--surface);
+		background: var(--game-panel-surface);
 	}
 
 	.progress-seal > span,
@@ -257,7 +257,10 @@
 
 	.field-journal {
 		min-width: 0;
-		background: linear-gradient(var(--bastion-paper), var(--bastion-paper-deep));
+		background: linear-gradient(
+			color-mix(in oklch, var(--bastion-paper) var(--game-panel-strong-opacity), transparent),
+			color-mix(in oklch, var(--bastion-paper-deep) var(--game-panel-strong-opacity), transparent)
+		);
 		color: var(--bastion-paper-ink);
 		box-shadow: 0 6px 8px oklch(0.08 0.025 190 / .42);
 	}

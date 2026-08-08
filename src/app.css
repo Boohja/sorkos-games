@@ -3,6 +3,8 @@
 @import './lib/styles/themes/bastion.css';
 @import './lib/styles/themes/octopath-traveler.css';
 @import './lib/styles/themes/yes-your-grace.css';
+@import './lib/styles/themes/graveyard-keeper.css';
+@import './lib/styles/themes/expedition-33.css';
 
 :root {
 	font-family:
@@ -231,6 +233,27 @@ a {
 .site-footer--bastion a {
 	color: oklch(0.9 0.055 82);
 }
+
+.site-footer--graveyard {
+	border-color: oklch(0.31 0.035 250);
+	background: oklch(0.115 0.018 250);
+}
+
+.site-footer--graveyard p {
+	color: oklch(0.72 0.025 77);
+}
+
+.site-footer--graveyard a {
+	color: oklch(0.9 0.04 77);
+}
+
+.site-footer--expedition {
+	border-color: oklch(0.3 0.055 315);
+	background: oklch(0.075 0.018 310);
+}
+
+.site-footer--expedition p { color: oklch(0.73 0.025 78); }
+.site-footer--expedition a { color: oklch(0.9 0.04 78); }
 
 ::view-transition-old(root) {
 	animation: 140ms cubic-bezier(0.25, 1, 0.5, 1) both page-transition-out;

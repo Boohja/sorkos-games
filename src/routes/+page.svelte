@@ -57,6 +57,26 @@
 			/>
 			<h2>Yes, Your Grace</h2>
 		</a>
+		<a class="game-card" href="/graveyard-keeper/">
+			<img
+				class="game-card__cover"
+				src="/images/graveyard-keeper/cover.webp"
+				alt=""
+				width="250"
+				height="304"
+			/>
+			<h2>Graveyard Keeper</h2>
+		</a>
+		<a class="game-card" href="/expedition-33/">
+			<img
+				class="game-card__cover"
+				src="/images/expedition-33/cover.webp"
+				alt=""
+				width="250"
+				height="304"
+			/>
+			<h2>Clair Obscur: Expedition 33</h2>
+		</a>
 	</div>
 </div>
 

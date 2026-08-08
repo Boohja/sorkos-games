@@ -122,13 +122,13 @@
 	.guide-hero { display: grid; grid-template-columns: minmax(0, 1fr) 12rem; gap: 3rem; align-items: end; margin-bottom: 2rem; }
 	.guide-section header > p, .guide-index > p, .missable > p { margin: 0 0 .6rem; color: var(--accent); font-size: .7rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
 	.guide-hero h1 { max-width: 14ch; margin-bottom: 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(3.25rem, 7.5vw, 6rem); font-weight: 400; letter-spacing: -.04em; }
-	.guide-progress { padding: 1rem; border: 1px solid var(--border); background: oklch(0.12 0.025 250 / .74); backdrop-filter: blur(12px); }
+	.guide-progress { padding: 1rem; border: 1px solid var(--border); background: var(--game-panel-surface); backdrop-filter: blur(12px); }
 	.guide-progress > span { color: var(--muted); font-size: .76rem; }
 	.guide-progress > strong { display: block; margin: .25rem 0 .75rem; font-size: 2rem; font-weight: 500; }
 	.guide-progress > div { height: 2px; background: var(--border); }
 	.guide-progress i { display: block; height: 100%; background: var(--accent); transition: width var(--transition-fast); }
 	.guide-progress button { margin-top: .8rem; padding: 0; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: .75rem; }
-	.missable { margin-bottom: 2rem; padding: clamp(1.25rem, 4vw, 2rem); border: 1px solid oklch(0.67 0.14 65); background: oklch(0.18 0.05 50 / .82); backdrop-filter: blur(12px); }
+	.missable { margin-bottom: 2rem; padding: clamp(1.25rem, 4vw, 2rem); border: 1px solid oklch(0.67 0.14 65); background: color-mix(in oklch, oklch(0.18 0.05 50) var(--game-panel-strong-opacity), transparent); backdrop-filter: blur(12px); }
 	.missable > p { color: oklch(0.82 0.13 75); }
 	.missable h2 { margin-bottom: .45rem; font-family: Georgia, 'Times New Roman', serif; font-weight: 500; }
 	.missable span { color: oklch(0.83 0.04 75); line-height: 1.55; }
@@ -137,7 +137,7 @@
 	.guide-index a { display: block; padding: .4rem 0; color: var(--muted); font-size: .8rem; text-decoration: none; }
 	.guide-index a:hover { color: var(--accent); }
 	.guide-content { display: grid; min-width: 0; gap: 1.25rem; }
-	.guide-section { border: 1px solid var(--border); background: oklch(0.14 0.025 250 / .76); box-shadow: 0 1.5rem 4rem oklch(0.06 0.02 250 / .3); backdrop-filter: blur(14px); }
+	.guide-section { border: 1px solid var(--border); background: var(--game-panel-surface); box-shadow: 0 1.5rem 4rem oklch(0.06 0.02 250 / .3); backdrop-filter: blur(14px); }
 	.guide-section > header { padding: clamp(1.25rem, 4vw, 2rem); border-bottom: 1px solid var(--border); }
 	.guide-section h2 { margin-bottom: .45rem; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 400; }
 	.guide-section { scroll-margin-top: calc(var(--site-header-height) + 1rem); }
@@ -156,7 +156,7 @@
 	.task-list em { margin-top: .45rem; color: oklch(0.82 0.13 75); font-size: .75rem; font-style: normal; font-weight: 700; }
 	.task-list .complete strong, .task-list .complete small { opacity: .55; text-decoration: line-through; }
 	.reference-panel { border-bottom: 1px solid var(--border); }
-	.reference-panel summary { display: flex; align-items: center; justify-content: space-between; padding: 1rem clamp(1.25rem, 4vw, 2rem); background: oklch(0.2 0.045 245 / .58); cursor: pointer; list-style: none; }
+	.reference-panel summary { display: flex; align-items: center; justify-content: space-between; padding: 1rem clamp(1.25rem, 4vw, 2rem); background: color-mix(in oklch, var(--game-panel-strong-color) var(--game-navigation-hover-opacity), transparent); cursor: pointer; list-style: none; }
 	.reference-panel summary::-webkit-details-marker { display: none; }
 	.reference-panel summary b { color: var(--accent); font-size: 1.25rem; font-weight: 400; transition: transform var(--transition-fast); }
 	.reference-panel[open] summary b { transform: rotate(45deg); }

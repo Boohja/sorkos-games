@@ -16,7 +16,7 @@
 	--button-secondary-bg: oklch(0.17 0.005 250);
 	--button-secondary-text: var(--ink);
 	--button-secondary-border: var(--border);
-	--card-surface: oklch(0.145 0.005 250 / 0.9);
+	--card-surface: color-mix(in oklch, oklch(0.145 0.005 250) var(--game-panel-opacity), transparent);
 	--status-bleed: oklch(0.65 0.25 28);
 	--status-fire: oklch(0.78 0.19 68);
 	--status-acid: oklch(0.84 0.21 125);
@@ -36,6 +36,8 @@
 	--status-root-fog: oklch(0.62 0.23 28);
 	--game-background-image: url('/images/remnant-2/background.webp');
 	--game-background-scrim: oklch(0.105 0.004 250 / 0.76);
+	--game-panel-opacity: 76%;
+	--game-panel-strong-opacity: 84%;
 }
 
 .theme-remnant .button {

@@ -288,6 +288,14 @@ fieldset > legend {
 	isolation: isolate;
 	min-height: 100%;
 	background: var(--canvas);
+	--game-navigation-opacity: 48%;
+	--game-navigation-hover-opacity: 58%;
+	--game-panel-opacity: 72%;
+	--game-panel-strong-opacity: 80%;
+	--game-panel-color: var(--surface);
+	--game-panel-strong-color: var(--surface-raised);
+	--game-panel-surface: color-mix(in oklch, var(--game-panel-color) var(--game-panel-opacity), transparent);
+	--game-panel-strong-surface: color-mix(in oklch, var(--game-panel-strong-color) var(--game-panel-strong-opacity), transparent);
 }
 
 .game-theme::before {
@@ -305,6 +313,11 @@ fieldset > legend {
 .game-theme > * {
 	position: relative;
 	z-index: 1;
+}
+
+.game-theme .text-card,
+.game-theme .item-card {
+	background: var(--game-panel-surface);
 }
 
 .game-landing {
@@ -344,6 +357,10 @@ fieldset > legend {
 	text-wrap: pretty;
 }
 
+.game-quote p:last-child {
+	margin-bottom: 0;
+}
+
 .game-quote cite {
 	color: var(--ink);
 	font-size: 0.875rem;
@@ -369,7 +386,7 @@ fieldset > legend {
 	gap: 1rem;
 	padding: 1rem;
 	border-bottom: 1px solid var(--border);
-	background: color-mix(in oklch, var(--canvas) 42%, transparent);
+	background: color-mix(in oklch, var(--canvas) var(--game-navigation-opacity), transparent);
 	color: var(--ink);
 	text-decoration: none;
 	transition:
@@ -380,12 +397,12 @@ fieldset > legend {
 
 .game-page-list a:hover {
 	padding-inline: 1.25rem;
-	background: color-mix(in oklch, var(--canvas) 52%, transparent);
+	background: color-mix(in oklch, var(--canvas) var(--game-navigation-hover-opacity), transparent);
 	color: var(--accent);
 }
 
 .game-page-list a:active {
-	background: var(--canvas);
+	background: color-mix(in oklch, var(--canvas) var(--game-navigation-hover-opacity), transparent);
 }
 
 @media (max-width: 48rem) {
@@ -397,5 +414,14 @@ fieldset > legend {
 
 	.game-logo {
 		max-width: 26rem;
+	}
+}
+
+@media (prefers-reduced-transparency: reduce) {
+	.game-theme {
+		--game-navigation-opacity: 100%;
+		--game-navigation-hover-opacity: 100%;
+		--game-panel-opacity: 100%;
+		--game-panel-strong-opacity: 100%;
 	}
 }

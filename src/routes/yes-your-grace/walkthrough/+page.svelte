@@ -276,7 +276,10 @@
 		min-width: 0;
 		background:
 			linear-gradient(90deg, oklch(0.77 0.055 76 / 0.28) 1px, transparent 1px) 3rem 0 / 100% 100%,
-			linear-gradient(var(--paper) 0%, var(--paper-deep) 100%);
+			linear-gradient(
+				color-mix(in oklch, var(--paper) var(--game-panel-strong-opacity), transparent) 0%,
+				color-mix(in oklch, var(--paper-deep) var(--game-panel-strong-opacity), transparent) 100%
+			);
 		color: var(--paper-ink);
 		box-shadow: 0 1.5rem 4rem oklch(0.08 0.02 155 / 0.38);
 	}
@@ -582,7 +585,10 @@
 		}
 
 		.ledger {
-			background: linear-gradient(var(--paper) 0%, var(--paper-deep) 100%);
+			background: linear-gradient(
+				color-mix(in oklch, var(--paper) var(--game-panel-strong-opacity), transparent) 0%,
+				color-mix(in oklch, var(--paper-deep) var(--game-panel-strong-opacity), transparent) 100%
+			);
 		}
 
 		.route-note {

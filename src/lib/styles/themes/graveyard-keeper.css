@@ -1,0 +1,40 @@
+.theme-graveyard {
+	--canvas: oklch(0.115 0.018 250);
+	--surface: oklch(0.17 0.022 52);
+	--surface-raised: oklch(0.22 0.032 52);
+	--ink: oklch(0.91 0.04 76);
+	--muted: oklch(0.73 0.035 76);
+	--accent: oklch(0.75 0.13 77);
+	--accent-ink: oklch(0.14 0.025 48);
+	--border: oklch(0.42 0.035 65 / 0.82);
+	--focus: oklch(0.82 0.16 82);
+	--radius-card: 1px;
+	--radius-control: 1px;
+	--button-primary-bg: oklch(0.37 0.13 28);
+	--button-primary-border: oklch(0.62 0.13 30);
+	--button-primary-text: oklch(0.94 0.045 78);
+	--game-background-image: url('/images/graveyard-keeper/background.webp');
+	--game-background-scrim: oklch(0.09 0.025 250 / 0.5);
+	--grave-panel: oklch(0.155 0.018 50);
+	--grave-panel-deep: oklch(0.115 0.015 50);
+	--grave-gold: oklch(0.72 0.1 75);
+	--grave-red: oklch(0.53 0.17 29);
+	--grave-blue: oklch(0.55 0.14 252);
+	--game-navigation-opacity: 74%;
+	--game-navigation-hover-opacity: 84%;
+	--game-panel-color: var(--grave-panel);
+	--game-panel-strong-color: var(--grave-panel-deep);
+}
+
+.theme-graveyard .game-page-list a {
+	border: 2px solid oklch(0.26 0.03 250);
+	background: linear-gradient(180deg, color-mix(in oklch, oklch(0.22 0.06 252) var(--game-navigation-opacity), transparent), color-mix(in oklch, oklch(0.14 0.035 252) var(--game-navigation-opacity), transparent));
+	box-shadow:
+		inset 0 0 0 1px oklch(0.39 0.07 250 / 0.7),
+		inset 0 -4px 0 oklch(0.08 0.02 250 / 0.55);
+}
+
+.theme-graveyard .game-page-list a:hover {
+	background: linear-gradient(180deg, color-mix(in oklch, oklch(0.29 0.075 252) var(--game-navigation-hover-opacity), transparent), color-mix(in oklch, oklch(0.18 0.045 252) var(--game-navigation-hover-opacity), transparent));
+	color: var(--ink);
+}
