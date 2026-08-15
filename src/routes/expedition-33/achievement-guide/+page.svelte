@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { acts, missableSteps, totalSteps, type GuideKind } from '$lib/data/expedition-33/achievement-guide';
 
-	const storageKey = 'games.sorkos.net:expedition-33:achievement-guide';
+	let { data } = $props();
+	const storageKey = $derived(data.sync.storageKey);
 	let completed = $state<string[]>([]);
 	let ready = $state(false);
 	const completedCount = $derived(completed.length);

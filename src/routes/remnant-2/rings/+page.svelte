@@ -4,7 +4,8 @@
 	import { rings, ringSource } from '$lib/data/remnant-2/rings';
 	import { statusEffects, type RingStatusId } from '$lib/data/remnant-2/statuses';
 
-	const storageKey = 'games.sorkos.net:remnant-2:owned-rings';
+	let { data } = $props();
+	const storageKey = $derived(data.sync.storageKey);
 	const presetFilters = [
 		'Heavy Weapon',
 		'Dodge',

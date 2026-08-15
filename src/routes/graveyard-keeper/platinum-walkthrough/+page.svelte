@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { phases, totalSteps, type Cue } from '$lib/data/graveyard-keeper/walkthrough';
 
-	const storageKey = 'games.sorkos.net:graveyard-keeper:platinum-walkthrough';
+	let { data } = $props();
+	const storageKey = $derived(data.sync.storageKey);
 	let completed = $state<string[]>([]);
 	let ready = $state(false);
 	const completedCount = $derived(completed.length);

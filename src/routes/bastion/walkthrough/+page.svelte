@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { routeSections, totalSteps } from '$lib/data/bastion/walkthrough';
 
-	const storageKey = 'games.sorkos.net:bastion:achievement-walkthrough';
+	let { data } = $props();
+	const storageKey = $derived(data.sync.storageKey);
 	let completed = $state<string[]>([]);
 	let ready = $state(false);
 	const progress = $derived(Math.round((completed.length / totalSteps) * 100));

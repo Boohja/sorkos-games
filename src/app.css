@@ -105,9 +105,185 @@ a {
 
 .site-breadcrumb {
 	display: flex;
+	flex: 1;
 	align-items: center;
 	gap: 0.7rem;
 	min-width: 0;
+}
+
+.site-header__actions {
+	display: flex;
+	flex: none;
+	align-items: center;
+}
+
+.sync-trigger svg {
+	width: 1rem;
+	height: 1rem;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.6;
+}
+
+.sync-dialog {
+	width: min(calc(100% - 2rem), 30rem);
+	max-width: none;
+	padding: 0;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-card);
+	background: var(--surface);
+	color: var(--ink);
+	box-shadow: 0 1.5rem 4rem oklch(0.03 0.01 340 / 0.65);
+}
+
+.sync-dialog::backdrop {
+	background: oklch(0.04 0.01 340 / 0.78);
+}
+
+.sync-dialog[open] {
+	animation: sync-dialog-in 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sync-dialog__panel {
+	position: relative;
+	display: grid;
+	gap: 1.35rem;
+	padding: clamp(1.35rem, 5vw, 2rem);
+}
+
+.sync-dialog__close {
+	position: absolute;
+	top: 0.85rem;
+	right: 0.85rem;
+	display: grid;
+	width: 2.25rem;
+	height: 2.25rem;
+	place-items: center;
+	padding: 0;
+	border: 0;
+	border-radius: var(--radius-control);
+	background: transparent;
+	color: var(--muted);
+	cursor: pointer;
+}
+
+.sync-dialog__close:hover {
+	background: var(--surface-raised);
+	color: var(--ink);
+}
+
+.sync-dialog__close svg {
+	width: 1.15rem;
+	height: 1.15rem;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-width: 1.6;
+}
+
+.sync-dialog__heading {
+	padding-right: 2rem;
+}
+
+.sync-dialog__heading h2,
+.sync-success h2 {
+	margin-bottom: 0.6rem;
+	font-size: clamp(1.4rem, 5vw, 1.8rem);
+	letter-spacing: -0.025em;
+}
+
+.sync-dialog__heading p,
+.sync-success p {
+	max-width: 48ch;
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+
+.sync-dialog__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+}
+
+.sync-dialog__form {
+	display: grid;
+	gap: 1rem;
+}
+
+.sync-dialog__back {
+	margin-bottom: 0.75rem;
+}
+
+.sync-code-input,
+.sync-code {
+	font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.08em;
+}
+
+.sync-code-input {
+	font-size: 1.1rem;
+	text-transform: uppercase;
+}
+
+.sync-code {
+	padding: 1rem;
+	border-block: 1px solid var(--border);
+	background: var(--canvas);
+	color: var(--ink);
+	font-size: clamp(1.75rem, 9vw, 2.6rem);
+	font-weight: 760;
+	line-height: 1;
+	text-align: center;
+	user-select: all;
+}
+
+.sync-dialog__expiry {
+	margin: -0.55rem 0 0;
+	color: var(--muted);
+	font-size: 0.75rem;
+}
+
+.sync-dialog__error {
+	margin: 0;
+	padding: 0.75rem 0.85rem;
+	border: 1px solid oklch(0.54 0.14 25);
+	border-radius: var(--radius-control);
+	background: oklch(0.22 0.06 25);
+	color: oklch(0.86 0.08 45);
+	font-size: 0.82rem;
+	line-height: 1.45;
+}
+
+.sync-success {
+	display: grid;
+	grid-template-columns: 2.5rem minmax(0, 1fr);
+	gap: 1rem;
+	align-items: start;
+}
+
+.sync-success > svg {
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0.45rem;
+	border: 1px solid var(--accent);
+	border-radius: 50%;
+	fill: none;
+	stroke: var(--accent);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.8;
+}
+
+@keyframes sync-dialog-in {
+	from {
+		opacity: 0;
+		transform: translateY(0.5rem) scale(0.985);
+	}
 }
 
 .brand {

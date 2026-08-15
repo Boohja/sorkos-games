@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import SyncControl from '$lib/components/SyncControl.svelte';
 	import '../app.css';
 
 	let { children } = $props();
@@ -104,6 +105,9 @@
 					>
 				{/if}
 			</nav>
+			<div class="site-header__actions">
+				<SyncControl />
+			</div>
 		</div>
 	</header>
 

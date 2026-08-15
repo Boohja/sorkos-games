@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { alternateRuns, phases, totalSteps } from '$lib/data/yes-your-grace/walkthrough';
 
-	const storageKey = 'yes-your-grace-walkthrough-progress';
+	let { data } = $props();
+	const storageKey = $derived(data.sync.storageKey);
 	let completed = $state<string[]>([]);
 	let ready = $state(false);
 

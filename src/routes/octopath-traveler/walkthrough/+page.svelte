@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { milestones, regularJobs, secretJobs, sections, totalChecklistItems } from '$lib/data/octopath-traveler/walkthrough';
 
-	const storageKey = 'games.sorkos.net:octopath-traveler:walkthrough';
+	let { data } = $props();
+	const storageKey = $derived(data.sync.storageKey);
 	let completed = $state<string[]>([]);
 	let ready = $state(false);
 	const progress = $derived(Math.round((completed.length / totalChecklistItems) * 100));
