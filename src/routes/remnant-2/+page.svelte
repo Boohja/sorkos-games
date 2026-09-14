@@ -30,6 +30,12 @@
 					<span aria-hidden="true">&rarr;</span>
 				</a>
 			</li>
+			<li>
+				<a href="/remnant-2/prism-guide/">
+					<span>Prism Guide</span>
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+			</li>
 		</ul>
 	</nav>
 </div>
