@@ -460,6 +460,18 @@
 		accent-color: var(--accent);
 	}
 
+	.plan-choice > strong,
+	.plan-choice > .fusion-components,
+	.plan-choice > .standalone-fragment {
+		transition: opacity 150ms ease;
+	}
+
+	.plan-choice input:checked ~ strong,
+	.plan-choice input:checked ~ .fusion-components,
+	.plan-choice input:checked ~ .standalone-fragment {
+		opacity: 0.25;
+	}
+
 	.plan-choice:hover strong,
 	.plan-choice:hover .fusion-components,
 	.plan-choice:hover .standalone-fragment {
@@ -583,8 +595,13 @@
 		font-size: 0.72rem;
 	}
 
+	.build-checklist label span {
+		transition: opacity 150ms ease;
+	}
+
 	.build-checklist .completed label span {
 		color: var(--muted);
+		opacity: 0.25;
 		text-decoration: line-through;
 	}
 
