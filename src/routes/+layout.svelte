@@ -6,6 +6,8 @@
 
 	let { children } = $props();
 	const currentYear = new Date().getFullYear();
+    const isWildsRoute = $derived(page.url.pathname.startsWith('/monster-hunter-wilds'));
+    const isWildsLanding = $derived(page.url.pathname.replace(/\/$/, '') === '/monster-hunter-wilds');
 	const isRemnantRoute = $derived(page.url.pathname.startsWith('/remnant-2'));
 	const isRemnantLanding = $derived(page.url.pathname.replace(/\/$/, '') === '/remnant-2');
 	const isGraceRoute = $derived(page.url.pathname.startsWith('/yes-your-grace'));
@@ -68,7 +70,10 @@
 						href="/remnant-2/"
 						aria-current={isRemnantLanding ? 'page' : undefined}>Remnant II</a
 					>
-				{:else if isGraceRoute}
+				{:else if isWildsRoute}
+                    <span class="site-breadcrumb__separator" aria-hidden="true">/</span>
+                    <a class="site-breadcrumb__game" href="/monster-hunter-wilds/" aria-current={isWildsLanding ? 'page' : undefined}>Monster Hunter Wilds</a>
+                {:else if isGraceRoute}
 					<span class="site-breadcrumb__separator" aria-hidden="true">/</span>
 					<a
 						class="site-breadcrumb__game"
@@ -114,6 +119,7 @@
 	<main class="site-main">{@render children()}</main>
 
 	<footer
+		class:site-footer--wilds={isWildsRoute}
 		class:site-footer--remnant={isRemnantRoute}
 		class:site-footer--grace={isGraceRoute}
 		class:site-footer--octopath={isOctopathRoute}

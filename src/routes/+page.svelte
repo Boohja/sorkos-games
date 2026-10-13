@@ -27,6 +27,10 @@
 			/>
 			<h2>Bastion</h2>
 		</a>
+        <a class="game-card" href="/monster-hunter-wilds/">
+            <img class="game-card__cover" src="/images/monster-hunter-wilds/cover.webp" alt="" width="250" height="357" />
+            <h2>Monster Hunter Wilds</h2>
+        </a>
 		<a class="game-card" href="/octopath-traveler/">
 			<img
 				class="game-card__cover"

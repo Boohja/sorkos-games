@@ -1,3 +1,4 @@
+@import './lib/styles/themes/monster-hunter-wilds.css';
 @import './lib/styles/components.css';
 @import './lib/styles/themes/remnant-2.css';
 @import './lib/styles/themes/bastion.css';
@@ -615,3 +616,7 @@ h1 {
 		transition-duration: 0.01ms !important;
 	}
 }
+
+.site-footer--wilds { background: oklch(0.16 0.025 85); border-color: oklch(0.5 0.055 90); }
+.site-footer--wilds p { color: oklch(0.78 0.035 85); }
+.site-footer--wilds a { color: oklch(0.94 0.025 90); }

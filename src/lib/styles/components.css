@@ -425,3 +425,32 @@ fieldset > legend {
 		--game-panel-strong-opacity: 100%;
 	}
 }
+
+/* Build directories and compact equipment reference guides. */
+.build-directory { max-width: 58rem; }
+.build-directory .game-page-list strong, .game-landing .game-page-list strong { font-size: 1.4rem; letter-spacing: -0.02em; }
+.build-directory .game-page-list small { display: block; margin-top: 0.35rem; color: var(--muted); font-size: 0.9rem; }
+.build-guide { max-width: 66rem; }
+.build-ranks { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-block: 1.5rem 1rem; }
+.build-hint { max-width: 72ch; color: var(--muted); font-size: 0.95rem; }
+.build-progression { display: grid; gap: 1.5rem; margin-block: 2rem; }
+.build-loadout { padding: clamp(1.1rem, 3vw, 2rem); scroll-margin-top: 1rem; }
+.build-loadout__heading { margin-bottom: 1.5rem; }
+.build-loadout__heading h2 { margin-bottom: 0.4rem; font-size: clamp(1.3rem, 3vw, 1.7rem); }
+.build-loadout__heading h2 span { color: var(--accent); margin-right: 0.75rem; white-space: nowrap; }
+.build-loadout__heading p, .build-source, .build-details small { color: var(--muted); }
+.build-loadout__columns { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
+.build-loadout h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+.build-equipment { margin: 0; }
+.build-equipment > div { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.75rem; padding-block: 0.4rem; }
+.build-equipment dt { color: var(--muted); font-size: 0.9rem; }
+.build-equipment dd { margin: 0; overflow-wrap: anywhere; }
+.build-equipment__weapon dd { font-weight: 700; }
+.build-details { display: grid; align-content: start; gap: 1.25rem; }
+.build-details p { margin: 0; }
+.build-details small { display: block; margin-top: 0.6rem; line-height: 1.6; }
+.build-skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.45rem 1rem; margin: 0; padding: 0; list-style: none; font-variant-numeric: tabular-nums; }
+.build-bonus { padding-top: 0.75rem; color: var(--accent); font-size: 0.9rem; }
+.build-source { max-width: 75ch; font-size: 0.85rem; }
+.build-source small { display: block; line-height: 1.6; }
+@media (max-width: 48rem) { .build-loadout__columns { grid-template-columns: 1fr; } }
