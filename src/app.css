@@ -469,6 +469,8 @@ a {
 	margin-bottom: clamp(2.5rem, 6vw, 5rem);
 }
 
+.page-heading__back { display: inline-flex; align-items: center; min-height: 2.75rem; margin-bottom: 0.75rem; }
+
 .breadcrumb {
 	display: flex;
 	flex-wrap: wrap;

@@ -139,6 +139,7 @@
 
 			try {
 				localStorage.setItem(payload.key, JSON.stringify(payload.value));
+                window.dispatchEvent(new CustomEvent('games:sync-imported', { detail: { key: payload.key } }));
 			} catch {
 				throw new Error('This browser could not save the imported values. The code is still available.');
 			}

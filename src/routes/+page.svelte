@@ -124,7 +124,7 @@
 
 	.game-card {
 		display: grid;
-		grid-template-rows: auto minmax(3.35rem, auto);
+		grid-template-rows: max-content minmax(4.8rem, 1fr);
 		overflow: hidden;
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
@@ -149,6 +149,7 @@
 	.game-card__cover {
 		display: block;
 		width: 100%;
+		height: auto;
 		aspect-ratio: 250 / 304;
 		object-fit: cover;
 	}
@@ -160,6 +161,7 @@
 		padding: 0.85rem 1rem;
 		border-top: 1px solid var(--border);
 		font-size: 1rem;
+		line-height: 1.5;
 		letter-spacing: -0.01em;
 	}
 

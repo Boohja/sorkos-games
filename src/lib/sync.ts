@@ -7,6 +7,13 @@ export type SyncPageMetadata = {
 };
 
 export const syncPages = {
+    wildsAchievements: {
+        game: 'monster-hunter-wilds',
+        page: 'achievements',
+        storageKey: 'games.sorkos.net:monster-hunter-wilds:achievements',
+        route: '/monster-hunter-wilds/achievements',
+        syncable: true
+    },
 	remnantRings: {
 		game: 'remnant-2',
 		page: 'rings',

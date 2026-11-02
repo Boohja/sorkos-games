@@ -1,0 +1,108 @@
+{
+  "monsters": {
+    "monster:zoh-shia": "/images/monster-hunter-wilds/icons/monsters/zoh-shia.webp",
+    "monster:guardian-doshaguma": "/images/monster-hunter-wilds/icons/monsters/guardian-doshaguma.webp",
+    "monster:rey-dau": "/images/monster-hunter-wilds/icons/monsters/rey-dau.webp",
+    "monster:lala-barina": "/images/monster-hunter-wilds/icons/monsters/lala-barina.webp",
+    "monster:congalala": "/images/monster-hunter-wilds/icons/monsters/congalala.webp",
+    "monster:nerscylla": "/images/monster-hunter-wilds/icons/monsters/nerscylla.webp",
+    "monster:gore-magala": "/images/monster-hunter-wilds/icons/monsters/gore-magala.webp",
+    "monster:gravios": "/images/monster-hunter-wilds/icons/monsters/gravios.webp",
+    "monster:guardian-arkveld": "/images/monster-hunter-wilds/icons/monsters/guardian-arkveld.webp",
+    "monster:quematrice": "/images/monster-hunter-wilds/icons/monsters/quematrice.webp",
+    "monster:doshaguma": "/images/monster-hunter-wilds/icons/monsters/doshaguma.webp",
+    "monster:balahara": "/images/monster-hunter-wilds/icons/monsters/balahara.webp",
+    "monster:rathian": "/images/monster-hunter-wilds/icons/monsters/rathian.webp",
+    "monster:chatacabra": "/images/monster-hunter-wilds/icons/monsters/chatacabra.webp",
+    "monster:mizutsune": "/images/monster-hunter-wilds/icons/monsters/mizutsune.webp",
+    "monster:guardian-fulgur-anjanath": "/images/monster-hunter-wilds/icons/monsters/guardian-fulgur-anjanath.webp",
+    "monster:hirabami": "/images/monster-hunter-wilds/icons/monsters/hirabami.webp",
+    "monster:yian-kut-ku": "/images/monster-hunter-wilds/icons/monsters/yian-kut-ku.webp",
+    "monster:rompopolo": "/images/monster-hunter-wilds/icons/monsters/rompopolo.webp",
+    "monster:arkveld": "/images/monster-hunter-wilds/icons/monsters/arkveld.webp",
+    "monster:ajarakan": "/images/monster-hunter-wilds/icons/monsters/ajarakan.webp",
+    "monster:gypceros": "/images/monster-hunter-wilds/icons/monsters/gypceros.webp",
+    "monster:xu-wu": "/images/monster-hunter-wilds/icons/monsters/xu-wu.webp",
+    "monster:guardian-rathalos": "/images/monster-hunter-wilds/icons/monsters/guardian-rathalos.webp",
+    "monster:uth-duna": "/images/monster-hunter-wilds/icons/monsters/uth-duna.webp",
+    "monster:jin-dahaad": "/images/monster-hunter-wilds/icons/monsters/jin-dahaad.webp",
+    "monster:nu-udra": "/images/monster-hunter-wilds/icons/monsters/nu-udra.webp",
+    "monster:guardian-ebony-odogaron": "/images/monster-hunter-wilds/icons/monsters/guardian-ebony-odogaron.webp",
+    "monster:rathalos": "/images/monster-hunter-wilds/icons/monsters/rathalos.webp",
+    "monster:blangonga": "/images/monster-hunter-wilds/icons/monsters/blangonga.webp",
+    "monster:lagiacrus": "/images/monster-hunter-wilds/icons/monsters/lagiacrus.webp",
+    "monster:seregios": "/images/monster-hunter-wilds/icons/monsters/seregios.webp",
+    "monster:omega-planetes": "/images/monster-hunter-wilds/icons/monsters/omega-planetes.webp",
+    "monster:gogmazios": "/images/monster-hunter-wilds/icons/monsters/gogmazios.webp"
+  },
+  "effects": {
+    "slash": {
+      "label": "Slash",
+      "src": "/images/monster-hunter-wilds/icons/effects/slash.png"
+    },
+    "blunt": {
+      "label": "Blunt",
+      "src": "/images/monster-hunter-wilds/icons/effects/blunt.png"
+    },
+    "pierce": {
+      "label": "Shot",
+      "src": "/images/monster-hunter-wilds/icons/effects/pierce.png"
+    },
+    "fire": {
+      "label": "Fire",
+      "src": "/images/monster-hunter-wilds/icons/effects/fire.png"
+    },
+    "water": {
+      "label": "Water",
+      "src": "/images/monster-hunter-wilds/icons/effects/water.png"
+    },
+    "thunder": {
+      "label": "Thunder",
+      "src": "/images/monster-hunter-wilds/icons/effects/thunder.png"
+    },
+    "ice": {
+      "label": "Ice",
+      "src": "/images/monster-hunter-wilds/icons/effects/ice.png"
+    },
+    "dragon": {
+      "label": "Dragon",
+      "src": "/images/monster-hunter-wilds/icons/effects/dragon.png"
+    },
+    "poison": {
+      "label": "Poison",
+      "src": "/images/monster-hunter-wilds/icons/effects/poison.png"
+    },
+    "paralysis": {
+      "label": "Paralysis",
+      "src": "/images/monster-hunter-wilds/icons/effects/paralysis.png"
+    },
+    "sleep": {
+      "label": "Sleep",
+      "src": "/images/monster-hunter-wilds/icons/effects/sleep.png"
+    },
+    "blastblight": {
+      "label": "Blast",
+      "src": "/images/monster-hunter-wilds/icons/effects/blastblight.png"
+    },
+    "stun": {
+      "label": "Stun",
+      "src": "/images/monster-hunter-wilds/icons/effects/stun.png"
+    },
+    "exhaust": {
+      "label": "Exhaust",
+      "src": "/images/monster-hunter-wilds/icons/effects/exhaust.png"
+    },
+    "flash": {
+      "label": "Flash",
+      "src": "/images/monster-hunter-wilds/icons/effects/flash.png"
+    },
+    "noise": {
+      "label": "Noise",
+      "src": "/images/monster-hunter-wilds/icons/effects/noise.png"
+    }
+  },
+  "sources": {
+    "monsters": "https://monsterhunterwiki.org/wiki/Category:MHWilds_Monster_Icons",
+    "effects": "https://www.phantombrawlers.com/mhwilds/Monsters/Gypceros"
+  }
+}
