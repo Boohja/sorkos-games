@@ -502,8 +502,6 @@ fieldset > legend {
 .ingredients-results { padding: 1rem; }
 .ingredients-results h2 { margin-bottom: 0.8rem; font-size: 1rem; }
 .ingredients-results > p, .ingredients-detail > p { max-width: 65ch; color: var(--muted); font-size: 0.95rem; }
-.ingredients-examples { display: grid; justify-items: start; gap: 0.35rem; font-size: 0.9rem; }
-.ingredients-examples > span { color: var(--muted); }
 .ingredients-result-list { max-height: 36rem; overflow-y: auto; margin: 0 -0.5rem; padding: 0; list-style: none; scrollbar-color: var(--border) transparent; }
 .ingredients-result-list button { width: 100%; display: grid; gap: 0.25rem; padding: 0.8rem 0.5rem; border: 0; border-radius: var(--radius-control); background: transparent; color: var(--ink); text-align: left; cursor: pointer; }
 .ingredients-result-list button:hover, .ingredients-result-list .ingredients-result--selected { background: var(--game-panel-strong-surface); color: var(--accent); }
@@ -577,3 +575,12 @@ fieldset > legend {
 
 .build-loadout__note { margin-block: -0.5rem 1.5rem; max-width: 72ch; color: var(--muted); font-size: 0.9rem; }
 .build-details .build-armor-jewels { margin-top: 0.6rem; }
+
+.database-monster-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; max-height: 36rem; overflow-y: auto; margin: 0 -0.5rem; padding: 0 0.35rem 0 0; list-style: none; scrollbar-color: var(--border) transparent; }
+.database-monster-grid li { min-width: 0; }
+.database-monster-choice { display: flex; flex-direction: column; align-items: center; justify-content: start; gap: 0.45rem; height: 100%; padding: 0.65rem 0.3rem; border-radius: var(--radius-control); color: var(--ink); text-align: center; text-decoration: none; }
+.database-monster-choice img { width: 3.5rem; height: 3.5rem; object-fit: contain; }
+.database-monster-choice span { font-size: 0.75rem; line-height: 1.4; overflow-wrap: anywhere; }
+.database-monster-choice:hover, .database-monster-choice--selected { background: var(--game-panel-strong-surface); color: var(--accent); }
+.database-monster-choice:focus-visible { outline-offset: -2px; }
+@media (max-width: 48rem) { .database-monster-grid { max-height: 18rem; } }

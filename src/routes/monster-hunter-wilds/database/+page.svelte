@@ -1,9 +1,13 @@
 <script lang="ts">
     import { tick } from 'svelte';
+    import { afterNavigate } from '$app/navigation';
     import EffectIcon from '$lib/components/EffectIcon.svelte';
     import icons from '$lib/data/monster-hunter-wilds/icons.json';
     import type { MonsterDetails } from '$lib/data/monster-hunter-wilds/monster-details';
     import { ingredients, equipmentById, kindLabels, searchIngredients, groupSources, type SearchKind } from '$lib/data/monster-hunter-wilds/ingredients';
+
+    let searchInput: HTMLInputElement;
+    afterNavigate(() => searchInput?.focus({ preventScroll: true }));
 
     let query = $state('');
     let kind = $state<SearchKind>('all');
@@ -19,6 +23,8 @@
     const monsterReference = $derived(ingredients.monsters[selectedId]);
     const monster = $derived(monsterData[selectedId]);
     const drops = $derived(monster && monsterModule ? monsterModule.monsterDrops(monster) : []);
+    const largeMonsters = Object.values(ingredients.monsters).filter((monster) => monster.kind === 'large').sort((a, b) => a.name.localeCompare(b.name));
+    const monsterThumbnails: Record<string, string> = icons.thumbnails;
     const monsterCount = Object.values(ingredients.monsters).filter((entry) => entry.name !== 'INVALID' && entry.name !== '???').length;
     async function loadMonster() {
         if (!selectedId.startsWith('monster:') || monsterModule) return;
@@ -58,11 +64,6 @@
         trail = trail.slice(0, -1);
         await loadMonster();
     }
-    function example(value: string) {
-        query = value;
-        kind = 'all';
-        shown = 40;
-    }
 </script>
 
 <svelte:head>
@@ -76,7 +77,7 @@
     </header>
     <form class="ingredients-search" role="search" onsubmit={(event) => event.preventDefault()}>
         <label class="field"><span class="field__label">Search equipment, materials, or monsters</span>
-            <input class="input" type="search" bind:value={query} oninput={() => (shown = 40)} autocomplete="off" spellcheck="false" />
+            <input class="input" type="search" bind:this={searchInput} bind:value={query} oninput={() => (shown = 40)} autocomplete="off" spellcheck="false" />
         </label>
         <label class="field"><span class="field__label">Search in</span><select class="select" bind:value={kind} onchange={() => (shown = 40)}>
             <option value="all">Everything</option><option value="weapon">Weapons</option><option value="armor">Armor</option><option value="material">Materials</option><option value="monster">Monsters</option>
@@ -85,11 +86,17 @@
 
     <div class="ingredients-layout">
         <section class="ingredients-results" aria-labelledby="ingredients-results-title">
-            <h2 id="ingredients-results-title">{query.trim() ? `${resultCount} ${resultCount === 1 ? 'match' : 'matches'}` : 'Search by name'}</h2>
-            <span class="sr-only" role="status">{query.trim() ? `${resultCount} ${resultCount === 1 ? 'result' : 'results'}` : 'Enter a name to search'}</span>
+            <h2 id="ingredients-results-title">{query.trim() ? `${resultCount} ${resultCount === 1 ? 'match' : 'matches'}` : 'Large monsters'}</h2>
+            <span class="sr-only" role="status">{query.trim() ? `${resultCount} ${resultCount === 1 ? 'result' : 'results'}` : `${largeMonsters.length} large monsters`}</span>
             {#if !query.trim()}
-                <p>Part of a name is enough. Search equipment, ingredients, and monsters together, or narrow the list above.</p>
-                <div class="ingredients-examples"><span>Try:</span>{#each ['Smiting Fulg', 'Thunder Sac', 'Gypceros'] as value}<button class="button button--text" type="button" onclick={() => example(value)}>{value}</button>{/each}</div>
+                <ul class="database-monster-grid">
+                    {#each largeMonsters as monster (monster.id)}
+                        <li><a class="database-monster-choice" class:database-monster-choice--selected={selectedId === monster.id} href="#ingredients-detail-title" aria-current={selectedId === monster.id ? 'true' : undefined} onclick={(event) => { event.preventDefault(); void select(monster.id, true); }}>
+                            <img src={monsterThumbnails[monster.id]} alt="" width="56" height="56" loading="lazy" decoding="async" />
+                            <span>{monster.name}</span>
+                        </a></li>
+                    {/each}
+                </ul>
             {:else if !matches.length}
                 <p>No matching entries. Try a shorter name or search in Everything.</p>
             {:else}

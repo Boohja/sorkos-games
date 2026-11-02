@@ -22,14 +22,16 @@ class Images(HTMLParser):
 parser = Images()
 parser.feed(fetch(CATEGORY).decode())
 monster_urls = {}
+monster_thumbnails = {}
 for image in parser.images:
     url = html.unescape(image.get('src', ''))
     match = re.search(r'/images/thumb/([^/]+/[^/]+)/(MHWA-(.+)_Icon.webp)/', url)
     if match:
         name = urllib.parse.unquote(match[3]).replace('_', ' ')
+        monster_thumbnails[name] = url
         monster_urls[name] = 'https://monsterhunterwiki.org/images/' + match[1] + '/' + match[2]
 monsters = json.loads((DATA / 'monsters.json').read_text(encoding='utf8'))['monsters']
-manifest = {'monsters': {}, 'effects': {}, 'sources': {'monsters': CATEGORY, 'effects': 'https://www.phantombrawlers.com/mhwilds/Monsters/Gypceros'}}
+manifest = {'monsters': {}, 'thumbnails': {}, 'effects': {}, 'sources': {'monsters': CATEGORY, 'effects': 'https://www.phantombrawlers.com/mhwilds/Monsters/Gypceros'}}
 jobs = []
 for key, monster in monsters.items():
     if monster['kind'] != 'large': continue
@@ -37,6 +39,10 @@ for key, monster in monsters.items():
     filename = 'monsters/' + key.removeprefix('monster:') + '.webp'
     manifest['monsters'][key] = '/images/monster-hunter-wilds/icons/' + filename
     jobs.append((filename, url))
+    thumbnail = 'monsters/thumbnails/' + key.removeprefix('monster:') + '.webp'
+    manifest['thumbnails'][key] = '/images/monster-hunter-wilds/icons/' + thumbnail
+    jobs.append((thumbnail, monster_thumbnails[monster['name']]))
+
 effects = {'slash': ('Slash', 'Cutting'), 'blunt': ('Blunt', 'Blunt'), 'pierce': ('Shot', 'Shot'), 'fire': ('Fire', 'fire'), 'water': ('Water', 'water'), 'thunder': ('Thunder', 'thunder'), 'ice': ('Ice', 'ice'), 'dragon': ('Dragon', 'dragon'), 'poison': ('Poison', 'poison'), 'paralysis': ('Paralysis', 'paralysis'), 'sleep': ('Sleep', 'sleep'), 'blastblight': ('Blast', 'blast'), 'stun': ('Stun', 'stun'), 'exhaust': ('Exhaust', 'exhaust'), 'flash': ('Flash', 'flash'), 'noise': ('Noise', 'screamer pod')}
 for key, (label, upstream) in effects.items():
     filename = 'effects/' + key + '.png'
