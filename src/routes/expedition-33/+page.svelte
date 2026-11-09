@@ -24,6 +24,7 @@
 					<span aria-hidden="true">›</span>
 				</a>
 			</li>
+		<li><a class="game-notes-link" href="/expedition-33/notes/"><span>Notes</span><span aria-hidden="true">&rarr;</span></a></li>
 		</ul>
 	</nav>
 </div>

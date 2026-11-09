@@ -22,6 +22,7 @@
     const monsterIcon = $derived((icons.monsters as Record<string, string>)[selectedId]);
     const monsterReference = $derived(ingredients.monsters[selectedId]);
     const monster = $derived(monsterData[selectedId]);
+    const affinities = $derived(monster && monsterModule ? monsterModule.monsterAffinities(monster) : []);
     const drops = $derived(monster && monsterModule ? monsterModule.monsterDrops(monster) : []);
     const largeMonsters = Object.values(ingredients.monsters).filter((monster) => monster.kind === 'large').sort((a, b) => a.name.localeCompare(b.name));
     const monsterThumbnails: Record<string, string> = icons.thumbnails;
@@ -150,17 +151,17 @@
                 {#if monsterLoading}<p role="status">Loading monster details…</p>
                 {:else if monsterError}<p role="alert">{monsterError}</p><button class="button button--outline-primary" onclick={loadMonster}>Retry</button>
                 {:else if monster && monsterModule}
-                    <section class="database-affinities" aria-label="Weaknesses and resistances">
-                        <div><h3>Weaknesses</h3><ul class="database-effect-list">
-                            {#each monster.weaknesses ?? [] as effect}<li><EffectIcon name={effect.element ?? effect.status ?? effect.effect ?? effect.kind} condition={effect.condition} /></li>{:else}<li class="muted">None recorded</li>{/each}
-                        </ul></div>
-                        <div><h3>Resistances</h3><ul class="database-effect-list">
-                            {#each monster.resistances ?? [] as effect}<li><EffectIcon name={effect.element ?? effect.status ?? effect.effect ?? effect.kind} condition={effect.condition} /></li>{:else}<li class="muted">None recorded</li>{/each}
-                        </ul></div>
-                    </section>
+                    {#if affinities.length}
+                        <section class="database-affinities" style:grid-template-columns={`repeat(${affinities.length}, minmax(0, 1fr))`} aria-label="Elements, status weaknesses and resistances">
+                            {#each affinities as group}<div><h3>{group.title}</h3><ul class="database-effect-list">
+                                {#each group.entries as effect}<li><EffectIcon name={effect.element ?? effect.status ?? effect.effect ?? effect.kind} condition={effect.condition} /></li>{/each}
+                            </ul></div>{/each}
+                        </section>
+                    {/if}
+                    {#key monster.id}
                     {#if monster.parts?.length}
-                        <section class="ingredients-monster-section" aria-labelledby="monster-hitzones-title">
-                            <h3 id="monster-hitzones-title">Body part effectiveness</h3>
+                        <details class="ingredients-monster-section database-disclosure">
+                            <summary>Body part effectiveness</summary>
                             <div class="ingredients-section-body">
                                 <!-- svelte-ignore a11y_no_noninteractive_tabindex (Keyboard users need to scroll the wide hitzone table.) -->
                                 <div class="ingredients-table-scroll" role="region" aria-label="Body part hitzones, scroll horizontally" tabindex="0"><table class="ingredients-hitzones">
@@ -169,13 +170,14 @@
                                 </table></div>
                                 <p class="ingredients-hitzone-note">Base hitzone values: higher means more damage gets through. Bold values mark the best physical damage and element per part; 0 means no damage of that type.</p>
                             </div>
-                        </section>
+                        </details>
                     {:else}<p class="ingredients-unavailable">Body-part effectiveness is not recorded for this monster yet.</p>{/if}
-                    <section class="ingredients-monster-section" aria-labelledby="monster-drops-title"><h3 id="monster-drops-title">High Rank drops</h3><div class="ingredients-section-body">
+                    <details class="ingredients-monster-section database-disclosure"><summary>High Rank drops</summary><div class="ingredients-section-body">
                         {#if drops.length}<div class="ingredients-table-scroll"><table class="ingredients-monster-drops"><thead><tr><th scope="col">Material / method</th><th scope="col">Chance</th><th scope="col">Qty</th></tr></thead><tbody>
                             {#each drops as drop}<tr><td><button class="link" onclick={() => select(drop.materialId, true)}>{ingredients.materials[drop.materialId].name}</button><small>{drop.method}{drop.part ? ` (${drop.part})` : ''}{drop.conditions ? ` · ${drop.conditions}` : ''}</small></td><td>{drop.chance === undefined ? '—' : `${drop.chance}%`}</td><td>×{drop.quantity}</td></tr>{/each}
                         </tbody></table></div>{:else}<p>No non-quest High Rank drops are recorded in the current snapshot.</p>{/if}
-                    </div></section>
+                    </div></details>
+                    {/key}
                 {/if}
             {:else}
                 <h2 id="ingredients-detail-title">Recipe & sources</h2>

@@ -30,6 +30,7 @@
 					<span aria-hidden="true">&rarr;</span>
 				</a>
 			</li>
+		<li><a class="game-notes-link" href="/yes-your-grace/notes/"><span>Notes</span><span aria-hidden="true">&rarr;</span></a></li>
 		</ul>
 	</nav>
 </div>

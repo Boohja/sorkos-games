@@ -5,6 +5,6 @@
 <div class="shell page build-directory">
     <header class="page-heading"><h1>Builds</h1><p>Weapons, armor, and skills for each stage of the hunt.</p></header>
     <nav class="game-page-list" aria-label="Build guides"><ul><li><a href="/monster-hunter-wilds/builds/insect-glaive/">
-        <span><strong>Insect Glaive</strong><small>HR 1–8 and HR 50+ · Low Rank, Frenzy and comfort setups</small></span><span aria-hidden="true">&rarr;</span>
+        <span><strong>Insect Glaive</strong><small>HR 1–8, HR 50+ and HR 100+ · Progression and endgame setups</small></span><span aria-hidden="true">&rarr;</span>
     </a></li></ul></nav>
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { tick } from 'svelte';
-	import { findSyncPage, isSyncValue } from '$lib/sync';
+	import { findSyncPage, isSyncPageValue } from '$lib/sync';
 
 	type View = 'choice' | 'import' | 'generated' | 'success';
 
@@ -67,7 +67,7 @@
 		const metadata = page.data.sync;
 
 		if (!metadata?.syncable) {
-			errorMessage = "Open one of the game's checklist or walkthrough pages first.";
+			errorMessage = "Open one of the game's notes, checklist or walkthrough pages first.";
 			return;
 		}
 
@@ -84,7 +84,7 @@
 			return;
 		}
 
-		if (!isSyncValue(value)) {
+		if (!isSyncPageValue(metadata.route, metadata.storageKey, value)) {
 			errorMessage = 'The saved values on this page are invalid and cannot be transferred.';
 			return;
 		}
@@ -132,7 +132,7 @@
 				typeof payload.key !== 'string' ||
 				typeof payload.route !== 'string' ||
 				!findSyncPage(payload.route, payload.key) ||
-				!isSyncValue(payload.value)
+				!isSyncPageValue(payload.route, payload.key, payload.value)
 			) {
 				throw new Error('This transfer is invalid.');
 			}

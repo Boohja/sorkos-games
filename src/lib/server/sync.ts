@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { findSyncPage, isSyncValue } from '$lib/sync';
+import { findSyncPage, isSyncPageValue, type SyncValue } from '$lib/sync';
 
 const CODE_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 const CODE_PATTERN = /^[2-9A-HJ-NP-Z]{8}$/;
@@ -18,7 +18,7 @@ export type SyncPayload = {
 	version: 1;
 	key: string;
 	route: string;
-	value: string[];
+	value: SyncValue;
 	createdAt: string;
 	expiresAt: string;
 };
@@ -53,7 +53,7 @@ export function isSyncPayload(value: unknown): value is SyncPayload {
 		typeof payload.route !== 'string' ||
 		typeof payload.createdAt !== 'string' ||
 		typeof payload.expiresAt !== 'string' ||
-		!isSyncValue(payload.value)
+		!isSyncPageValue(payload.route, payload.key, payload.value)
 	) {
 		return false;
 	}

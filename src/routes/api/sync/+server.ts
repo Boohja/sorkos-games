@@ -1,7 +1,7 @@
 import { put } from '@vercel/blob';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { findSyncPage, isSyncValue } from '$lib/sync';
+import { findSyncPage, isSyncPageValue } from '$lib/sync';
 import {
 	blobAuth,
 	generateSyncCode,
@@ -46,7 +46,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		typeof key !== 'string' ||
 		typeof route !== 'string' ||
 		!findSyncPage(route, key) ||
-		!isSyncValue(value)
+		!isSyncPageValue(route, key, value)
 	) {
 		return json({ error: 'This page cannot be transferred.' }, { status: 400 });
 	}

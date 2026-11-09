@@ -24,6 +24,7 @@
 					<span aria-hidden="true">&rarr;</span>
 				</a>
 			</li>
+		<li><a class="game-notes-link" href="/bastion/notes/"><span>Notes</span><span aria-hidden="true">&rarr;</span></a></li>
 		</ul>
 	</nav>
 </div>

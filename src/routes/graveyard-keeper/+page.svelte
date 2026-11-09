@@ -30,6 +30,7 @@
 					<span aria-hidden="true">›</span>
 				</a>
 			</li>
+		<li><a class="game-notes-link" href="/graveyard-keeper/notes/"><span>Notes</span><span aria-hidden="true">&rarr;</span></a></li>
 		</ul>
 	</nav>
 </div>

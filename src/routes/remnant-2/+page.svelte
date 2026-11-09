@@ -36,6 +36,7 @@
 					<span aria-hidden="true">&rarr;</span>
 				</a>
 			</li>
+		<li><a class="game-notes-link" href="/remnant-2/notes/"><span>Notes</span><span aria-hidden="true">&rarr;</span></a></li>
 		</ul>
 	</nav>
 </div>

@@ -38,3 +38,12 @@ export function monsterDrops(monster: MonsterDetails): MonsterDrop[] {
         .map((source) => ({ materialId: material.id, method: source.method, quantity: source.quantity, chance: source.chance, part: source.part, conditions: source.conditions })));
     return [...drops].sort((a, b) => ingredients.materials[a.materialId].name.localeCompare(ingredients.materials[b.materialId].name) || a.method.localeCompare(b.method));
 }
+
+export function monsterAffinities(monster: MonsterDetails) {
+    const isElement = (entry: MonsterEffect) => elementalTypes.includes(entry.element as typeof elementalTypes[number]);
+    return [
+        { title: 'Effective', entries: (monster.weaknesses ?? []).filter(isElement) },
+        { title: 'Weakness', entries: (monster.weaknesses ?? []).filter((entry) => !isElement(entry) && (entry.level ?? 0) >= 3) },
+        { title: 'Resistances', entries: monster.resistances ?? [] },
+    ].filter((group) => group.entries.length > 0);
+}

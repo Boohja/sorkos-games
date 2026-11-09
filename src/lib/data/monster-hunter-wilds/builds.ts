@@ -61,4 +61,67 @@ export const highRankGlaiveBuilds = [
     },
 ] as const satisfies readonly GlaiveBuild[];
 
-export const glaiveBuilds: readonly GlaiveBuild[] = [...lowRankGlaiveBuilds, ...highRankGlaiveBuilds];
+export const endgameGlaiveBuilds = [
+    {
+        id: 'hr-100-rathagore', rank: 'HR 100+', navLabel: 'HR 100+ · Rathagore', name: 'Rathagore',
+        purpose: 'Guardian Rathalos 2-piece + Gore Magala 2-piece.',
+        weapon: 'Limbo Llor — Gore Magala’s Tyranny / Lord’s Soul',
+        armor: ['Arkvulcan Helm γ', 'Udra Miremail γ', 'G. Rathalos Vambraces β', 'G. Rathalos Coil α', 'Gore Greaves β'],
+        charm: 'Agitator 3 talisman', kinsect: 'Arkmaiden / Foebeetle',
+        skills: ['Agitator 5', 'Weakness Exploit 5', 'Critical Boost 5', 'Antivirus 3', 'Counterstrike 3', 'Maximum Might 3', 'Airborne 1', 'Burst 1'],
+        bonus: 'Scorcher I · Black Eclipse I · Lord’s Soul',
+        alternative: 'Use Poverty Arkgore until both required weapon bonuses are rolled.',
+        jewels: 'Critical III [3], Critical II [2], Flight/Attack [3].',
+        armorJewels: '2 × Challenger [3], Chain [3], Counter [2], 3 × Mighty [2], Earplugs [2], 2 × Sane [1].',
+        note: 'Requires Arch-tempered Arkveld, Arch-tempered Nu Udra and transcended Guardian Rathalos armor. The talisman only needs Agitator 3; extra skills or slots are optional.',
+        jewelNote: 'Element-heavy fight alternative: Arkvulcan Mail γ replaces Udra Miremail γ, trading Agitator 5 → 3 for Convert Element 3.',
+    },
+    {
+        id: 'hr-100-arkgore', rank: 'HR 100+', navLabel: 'HR 100+ · Arkgore', name: 'Poverty Arkgore',
+        purpose: 'Arkveld 2-piece + Gore Magala 2-piece; no weapon bonus rolls needed.',
+        weapon: 'Limbo Llor — any set/group bonuses',
+        armor: ['Arkvulcan Helm γ', 'Udra Miremail γ', 'Arkvulcan Vambraces γ', 'Gore Coil β', 'Sororal Boots α'],
+        charm: 'Agitator 3 talisman', kinsect: 'Arkmaiden / Foebeetle',
+        skills: ['Critical Boost 5', 'Weakness Exploit 5', 'Agitator 4', 'Antivirus 3', 'Counterstrike 3', 'Maximum Might 3', 'Airborne 1', 'Flayer 2'],
+        bonus: 'Decimator I · Black Eclipse I · Lord’s Soul (from armor)',
+        alternative: 'Rathagore once the weapon has Gore Magala’s Tyranny + Lord’s Soul.',
+        jewels: 'Critical III [3], Critical II [2], Flight/Attack [3].',
+        armorJewels: 'Challenger [3], Chain [3], 3 × Mighty [2], Counter [2], Earplugs [2], 3 × Sane [1].',
+        note: 'Requires Arch-tempered Arkveld, Arch-tempered Nu Udra and Nadia’s Sororal armor. “Poverty” refers to the weapon’s set/group rolls; this is still late endgame gear.',
+    },
+] as const satisfies readonly GlaiveBuild[];
+
+export const glaiveBuilds: readonly GlaiveBuild[] = [...lowRankGlaiveBuilds, ...highRankGlaiveBuilds, ...endgameGlaiveBuilds];
+
+// Condensed priorities from MHWS Sets (TU4.5); tied numbers share priority.
+export const glaiveSkillPriorities = [
+    { title: 'Set / group', rows: [
+        ['1', 'Lord’s Soul', 'Prioritize while Guts remains.'],
+        ['2', 'Burst Boost I/II', 'Attack; longer Burst uptime.'],
+        ['2', 'Scorcher I', 'Especially against fire weaknesses.'],
+        ['3', 'Black Eclipse I', 'Affinity; requires Antivirus 3.'],
+        ['3', 'Powerhouse I', 'Attack after successful offsets.'],
+        ['4', 'Mutual Hostility I', 'Element during enrage.'],
+        ['5', 'Azure Bolt I', 'Short affinity window.'],
+        ['5', 'Second Wind I', 'Helps Maximum Might uptime.'],
+    ] },
+    { title: 'Armor', rows: [
+        ['1', 'Maximum Might 3', 'Ground attacks preserve stamina.'],
+        ['1', 'Agitator 2–5', 'Benefits from enrage uptime.'],
+        ['1', 'Weakness Exploit 2–5', 'Reliable weak-point affinity.'],
+        ['1', 'Burst 1+', 'Efficient first point.'],
+        ['2', 'Counterstrike 3', 'Also triggered by hyperarmor.'],
+        ['2', 'Latent Power 2+', 'Depends on activation uptime.'],
+        ['3', 'Earplugs 1', 'Combines with triple extract.'],
+        ['3', 'Flayer 1', 'Useful low investment.'],
+        ['4', 'Convert Element 1', 'Requires frequent elemental hits.'],
+    ] },
+    { title: 'Weapon', rows: [
+        ['1', 'Critical Boost 3/5', 'Prioritize with high affinity.'],
+        ['1', 'Airborne', 'Also buffs key grounded moves.'],
+        ['2', 'Attack Boost 4/5', 'Good with suitable talismans.'],
+        ['2', 'Handicraft 1', 'Extra white sharpness.'],
+        ['3', 'Critical Eye 3+', 'Avoid overcapping affinity.'],
+        ['4', 'Master’s Touch / Razor Sharp 3', 'If sharpness becomes limiting.'],
+    ] },
+] as const;
